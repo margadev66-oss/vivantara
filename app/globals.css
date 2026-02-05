@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #FAFAFA;
+  --color-thought: #1F2E46;
+  --color-warmth: #A89F91;
+  --color-sandstone: #C8B89C;
+  --color-action: #E07B7B;
+  
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+/* Base styles for Typography consistency */
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-thought);
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+}
