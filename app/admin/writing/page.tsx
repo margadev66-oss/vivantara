@@ -11,7 +11,7 @@ export default async function WritingPage() {
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-serif text-thought">Writing / Blog</h1>
+        <h1 className="text-3xl font-serif text-thought">Articles</h1>
         <Link 
           href="/admin/writing/new" 
           className="flex items-center space-x-2 bg-action text-white px-4 py-2 font-medium hover:bg-action/90 transition-colors"

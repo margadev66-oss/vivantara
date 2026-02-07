@@ -1,5 +1,15 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
+import { getEditablePage } from "@/lib/editable-pages"
+
+const articleThemes = [
+  "Why capable people appear to underperform in the wrong roles",
+  "How organisations reveal their true character when things go wrong",
+  "The role of Cognitive Diversity and Neurodiversity in high-pressure environments",
+  "Psychological safety as a signal of organisational stress response",
+  "Gaps between leadership intent and team behaviour",
+  "Observations from real organisational situations",
+]
 
 export default async function ResourcesArticlesPage({
   searchParams,
@@ -24,15 +34,70 @@ export default async function ResourcesArticlesPage({
     distinct: ["category"]
   })
 
+  const editablePage = await getEditablePage("resources/articles")
+
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
       <div className="container mx-auto max-w-5xl">
-        <h1 className="text-4xl md:text-5xl font-serif text-thought mb-4">Articles / Blogs</h1>
-        <p className="text-thought/60 text-lg mb-12 max-w-2xl">
-          Essays and reflections across individuals, teams, organisations, and research.
-        </p>
+        {editablePage ? (
+          <section className="section-card rounded-2xl p-8 md:p-10 mb-12">
+            <h1 className="text-4xl md:text-5xl font-serif text-thought mb-6">{editablePage.title}</h1>
+            <div
+              className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-thought prose-p:text-thought/85 prose-li:text-thought/85 prose-a:text-action"
+              dangerouslySetInnerHTML={{ __html: editablePage.content }}
+            />
+          </section>
+        ) : (
+          <>
+            <h1 className="text-4xl md:text-5xl font-serif text-thought mb-6">Articles and Reflections</h1>
 
-        <div className="flex flex-col md:flex-row gap-12">
+            <div className="space-y-5 text-thought/75 text-lg leading-relaxed max-w-4xl mb-10">
+              <p>
+                Vivartana&apos;s work is accompanied by ongoing reflections on how organisations behave under pressure,
+                how cognitive diversity shapes performance, and how leadership influences collective response during
+                challenging situations.
+              </p>
+              <p>
+                These articles explore practical observations from workplaces and connect them to the frameworks that
+                inform Vivartana&apos;s work.
+              </p>
+            </div>
+
+            <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-10">
+              <h2 className="text-3xl font-serif text-thought mb-6">Themes You Will Find Here</h2>
+              <ul className="space-y-3">
+                {articleThemes.map((theme) => (
+                  <li key={theme} className="text-thought/80 text-lg leading-relaxed">
+                    {theme}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-10">
+              <h2 className="text-3xl font-serif text-thought mb-5">Purpose of These Articles</h2>
+              <p className="text-thought/75 text-lg leading-relaxed mb-4">
+                These writings are not academic papers and not promotional material.
+              </p>
+              <p className="text-thought/75 text-lg leading-relaxed">
+                They are reflections intended to help leaders and teams see familiar situations from a different lens,
+                one that focuses on how organisations behave when tested.
+              </p>
+            </section>
+
+            <section className="border border-thought/10 bg-thought text-white p-8 md:p-10 mb-12">
+              <h2 className="text-3xl font-serif mb-5">Closing</h2>
+              <p className="text-warmth/90 text-lg leading-relaxed mb-4">
+                New articles are added periodically as Vivartana&apos;s work and research continue to evolve.
+              </p>
+              <a href="#latest-reflections" className="inline-block text-action hover:text-white transition-colors text-lg">
+                Explore the latest reflections
+              </a>
+            </section>
+          </>
+        )}
+
+        <div id="latest-reflections" className="flex flex-col md:flex-row gap-12">
           <aside className="w-full md:w-64 flex-shrink-0">
             <h3 className="text-sm uppercase tracking-widest text-warmth mb-4 border-b border-warmth/20 pb-2">
               Categories

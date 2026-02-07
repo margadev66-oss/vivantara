@@ -1,70 +1,122 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { prisma } from '@/lib/prisma'
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronDown, Menu, ArrowRight } from "lucide-react";
+import { prisma } from "@/lib/prisma";
 
 export default async function Navbar() {
   const menuItems = await prisma.menuItem.findMany({
     where: { parentId: null },
     include: {
       children: {
-        orderBy: { order: 'asc' }
-      }
+        orderBy: { order: "asc" },
+      },
     },
-    orderBy: { order: 'asc' }
-  })
+    orderBy: { order: "asc" },
+  });
 
   return (
-    <nav className="border-b border-warmth/20 bg-canvas sticky top-0 z-50">
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 overflow-hidden mix-blend-multiply">
-            <Image 
-              src="/logo.png" 
-              alt="Vivartana Logo" 
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-          <span className="font-serif text-2xl font-bold text-thought tracking-tight group-hover:text-action transition-colors">
-            Vivartana
-          </span>
-        </Link>
-        
-        <div className="hidden md:flex space-x-8">
-          {menuItems.map((item) => (
-            <div key={item.id} className="relative group">
-              <Link 
-                href={item.url || '#'} 
-                className="text-thought/80 hover:text-action transition-colors text-sm font-medium uppercase tracking-wider"
-              >
-                {item.title}
-              </Link>
-              
-              {item.children.length > 0 && (
-                <div className="absolute left-0 mt-2 w-56 bg-white border border-warmth/20 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity invisible group-hover:visible">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.id}
-                      href={child.url || '#'}
-                      className="block px-4 py-3 text-sm text-thought hover:bg-warmth/10 border-b border-warmth/10 last:border-0"
-                    >
-                      {child.title}
-                    </Link>
-                  ))}
-                </div>
-              )}
+    <header className="sticky top-0 z-50 px-4 pt-4 md:px-6">
+      <nav className="mx-auto max-w-7xl rounded-2xl border border-warmth/20 bg-surface/85 backdrop-blur supports-[backdrop-filter]:bg-surface/78 shadow-[0_16px_40px_-28px_rgba(16,25,37,0.6)]">
+        <div className="flex h-[76px] items-center justify-between px-4 md:px-6">
+          <Link href="/home" className="flex items-center gap-3">
+            <div className="relative h-9 w-9 overflow-hidden rounded-full border border-warmth/25 bg-white/85">
+              <Image src="/logo.png" alt="Vivartana Logo" fill className="object-cover scale-110" priority />
             </div>
-          ))}
-        </div>
+            <div>
+              <p className="font-serif text-[1.35rem] leading-none text-thought">Vivartana</p>
+              <p className="text-[0.62rem] uppercase tracking-[0.24em] text-warmth mt-1 hidden sm:block">
+                Organisational Response
+              </p>
+            </div>
+          </Link>
 
-        <Link 
-          href="/contact" 
-          className="bg-action text-white px-6 py-2 rounded-none text-sm font-medium hover:bg-action/90 transition-colors"
-        >
-          Start a Conversation
-        </Link>
-      </div>
-    </nav>
-  )
+          <div className="hidden items-center gap-8 lg:flex">
+            {menuItems.map((item) => (
+              <div key={item.id} className="group relative">
+                {(() => {
+                  const visibleChildren =
+                    item.url === "/engage"
+                      ? item.children.filter((child) => child.url !== "/engage/individuals")
+                      : item.children;
+
+                  return (
+                    <>
+                <Link
+                  href={item.url || "#"}
+                  className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-thought/78 hover:text-action transition-colors"
+                >
+                  {item.title}
+                  {visibleChildren.length > 0 ? <ChevronDown size={14} className="mt-[1px]" /> : null}
+                </Link>
+
+                {visibleChildren.length > 0 ? (
+                  <div className="invisible absolute left-0 top-[calc(100%+14px)] w-72 translate-y-1 rounded-xl border border-warmth/20 bg-surface p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                    {visibleChildren.map((child) => (
+                      <Link
+                        key={child.id}
+                        href={child.url || "#"}
+                        className="block rounded-lg px-3 py-2.5 text-sm text-thought/78 hover:bg-canvas hover:text-action transition-colors"
+                      >
+                        {child.title}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+                    </>
+                  );
+                })()}
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Link href="/contact" className="cta-button rounded-xl px-4 py-2.5 text-sm">
+              <span className="hidden sm:inline">Start Conversation</span>
+              <span className="sm:hidden">Connect</span>
+              <ArrowRight size={14} />
+            </Link>
+
+            <details className="relative lg:hidden">
+              <summary className="list-none cursor-pointer rounded-xl border border-warmth/25 bg-white/80 p-2.5 text-thought/80 hover:text-action transition-colors">
+                <Menu size={18} />
+              </summary>
+              <div className="absolute right-0 top-[calc(100%+10px)] w-[min(80vw,320px)] rounded-xl border border-warmth/20 bg-surface p-2 shadow-2xl">
+                {menuItems.map((item) => (
+                  <div key={item.id} className="rounded-lg">
+                    {(() => {
+                      const visibleChildren =
+                        item.url === "/engage"
+                          ? item.children.filter((child) => child.url !== "/engage/individuals")
+                          : item.children;
+
+                      return (
+                        <>
+                    <Link href={item.url || "#"} className="block rounded-lg px-3 py-2 text-sm font-medium text-thought/85 hover:bg-canvas">
+                      {item.title}
+                    </Link>
+                    {visibleChildren.length > 0 ? (
+                      <div className="ml-2 border-l border-warmth/20">
+                        {visibleChildren.map((child) => (
+                          <Link
+                            key={child.id}
+                            href={child.url || "#"}
+                            className="block rounded-lg px-3 py-2 text-sm text-thought/70 hover:bg-canvas hover:text-action"
+                          >
+                            {child.title}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                        </>
+                      );
+                    })()}
+                  </div>
+                ))}
+              </div>
+            </details>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
 }

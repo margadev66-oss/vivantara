@@ -1,23 +1,48 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { getEditablePage } from "@/lib/editable-pages"
 
 export default async function EngageIndex() {
+  const editablePage = await getEditablePage("engage")
   const menu = await prisma.menuItem.findFirst({
     where: { title: "Engage with Us" },
     include: { children: { orderBy: { order: "asc" } } }
   })
+  const visibleChildren = menu?.children.filter((item) => item.url !== "/engage/individuals")
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
       <div className="container mx-auto max-w-5xl">
-        <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Engage with Us</h1>
-        <p className="text-thought/70 text-xl max-w-3xl mb-16 leading-relaxed">
-          Clear pathways for individuals and organisations to work with Vivartana, from first contact to long-term partnerships.
-        </p>
+        {editablePage ? (
+          <section className="section-card rounded-2xl p-8 md:p-10 mb-16">
+            <h1 className="text-4xl md:text-6xl font-serif text-thought mb-6">{editablePage.title}</h1>
+            <div
+              className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-thought prose-p:text-thought/85 prose-li:text-thought/85 prose-a:text-action"
+              dangerouslySetInnerHTML={{ __html: editablePage.content }}
+            />
+          </section>
+        ) : (
+          <>
+            <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Engaging with Vivartana</h1>
+
+            <div className="space-y-6 text-thought/75 text-lg leading-relaxed max-w-4xl mb-16">
+              <p>
+                Engaging with Vivartana is a structured, iterative journey to understand and progressively strengthen
+                the organisational dimensions that determine how people sense, interpret, coordinate, and hold together
+                under pressure.
+              </p>
+              <p>
+                Organisations reveal their true character not in routine operations, but when they are tested by
+                uncertainty, disruption, and stress.
+              </p>
+              <p>Vivartana focuses on strengthening the underlying properties that shape this response.</p>
+            </div>
+          </>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {menu?.children.map((item) => (
+          {visibleChildren?.map((item) => (
             <Link 
               key={item.id} 
               href={item.url || "#"}

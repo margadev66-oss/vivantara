@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
-import { Edit, FileText } from "lucide-react"
+import { Edit, FileText, Plus } from "lucide-react"
 
 export default async function PagesIndex() {
   const pages = await prisma.page.findMany({
@@ -9,7 +9,21 @@ export default async function PagesIndex() {
 
   return (
     <div>
-      <h1 className="text-3xl font-serif text-thought mb-8">Site Pages</h1>
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+        <div>
+          <h1 className="text-3xl font-serif text-thought">Site Pages</h1>
+          <p className="text-sm text-thought/60 mt-2">
+            Use Sync Navigation for defaults or create additional pages manually.
+          </p>
+        </div>
+        <Link
+          href="/admin/pages/new"
+          className="inline-flex items-center gap-2 bg-action text-white px-4 py-2 text-sm font-medium hover:bg-action/90 transition-colors w-fit"
+        >
+          <Plus size={16} />
+          <span>New Page</span>
+        </Link>
+      </div>
       <div className="bg-white border border-warmth/20">
         <table className="w-full text-left">
           <thead className="bg-warmth/10 border-b border-warmth/20">

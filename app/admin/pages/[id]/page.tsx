@@ -2,8 +2,8 @@ import { prisma } from "@/lib/prisma"
 import PageForm from "../PageForm"
 import { notFound } from "next/navigation"
 
-export default async function EditPage({ params }: { params: { id: string } }) {
-  const { id } = params
+export default async function EditPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   
   const page = await prisma.page.findUnique({
     where: { id }

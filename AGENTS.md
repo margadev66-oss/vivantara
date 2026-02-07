@@ -1,37 +1,43 @@
-﻿# Repository Guidelines
+# Repository Guidelines
 
 ## Project Structure & Module Organization
-- `app/`: Next.js App Router routes, layouts, and server actions (see `app/actions.ts`, `app/layout.tsx`, and route groups like `app/(public)`). API handlers live under `app/api/`.
-- `components/`: Shared React UI components.
-- `lib/`: Reusable utilities (data access, auth helpers, etc.).
-- `prisma/`: Prisma schema, migrations, and seed script (`schema.prisma`, `migrations/`, `seed.ts`).
-- `public/`: Static assets served as-is.
+- `app/`: Next.js App Router routes, layouts, and API handlers (`app/api/*`). Keep route-specific UI close to route segments (for example `app/(public)/*`).
+- `components/`: Shared React components (for example `components/Navbar.tsx`, `components/Footer.tsx`).
+- `lib/`: Reusable server/client utilities (auth, data-access helpers, validators, constants).
+- `prisma/`: Schema, migrations, and seed logic (`prisma/schema.prisma`, `prisma/migrations/*`, `prisma/seed.ts`).
+- `tests/`: Vitest + Testing Library tests (`tests/setup.ts`, `tests/**/*.test.ts[x]`).
+- `public/`: Static assets served directly.
 
 ## Build, Test, and Development Commands
 - `npm install`: Install dependencies.
-- `npm run dev`: Start the local dev server (default `http://localhost:3000`).
-- `npm run build`: Create a production build.
-- `npm run start`: Run the production build locally.
-- `npm run lint`: Run ESLint (Next.js core-web-vitals + TypeScript rules).
-- `npm run test`: Run the Vitest suite once (CI-friendly).
-- `npm run test:watch`: Run Vitest in watch mode during development.
-- `npx prisma migrate dev --name init`: Apply local database migrations.
-- `npx tsx prisma/seed.ts`: Seed initial data.
+- `npm run dev`: Start local dev server at `http://localhost:3000`.
+- `npm run build`: Build production bundle.
+- `npm run start`: Serve the production build locally.
+- `npm run lint`: Run ESLint checks.
+- `npm run test`: Run Vitest once (CI-style).
+- `npm run test:watch`: Run Vitest in watch mode.
+- `npx prisma migrate dev --name <name>`: Create/apply a local migration.
+- `npx tsx prisma/seed.ts`: Seed local data.
 
 ## Coding Style & Naming Conventions
-- TypeScript + React with Next.js App Router. Use existing formatting (2-space indentation, double quotes, semicolons).
-- Prefer `@/*` import aliases for root paths (configured in `tsconfig.json`).
-- Tailwind CSS v4 for styling; keep classes readable and grouped by layout -> typography -> color when possible.
+- Use TypeScript + React with 2-space indentation, double quotes, and semicolons.
+- Prefer `@/*` path aliases from `tsconfig.json` over deep relative imports.
+- Components: PascalCase file names (`Navbar.tsx`); utilities: descriptive camelCase exports.
+- Tailwind CSS v4: group classes by layout, typography, then color for readability.
 
 ## Testing Guidelines
-- Tests run with Vitest + Testing Library in a `jsdom` environment.
-- Name tests `*.test.ts` or `*.test.tsx` and place them under `tests/` (e.g., `tests/lib/utils.test.ts`).
-- Run `npm run test` before PRs; use `npm run test:watch` for local iteration.
+- Frameworks: Vitest, Testing Library, and `jsdom` test environment.
+- Name tests `*.test.ts` or `*.test.tsx`; place them under `tests/`.
+- Add tests for new logic and regression-prone UI flows; run `npm run test` before opening a PR.
+- No strict coverage threshold is enforced yet, but meaningful coverage is expected for changed code.
 
 ## Commit & Pull Request Guidelines
-- Git history is minimal and does not establish a commit convention. Use short, imperative summaries (e.g., "Add admin menu editor").
-- PRs should include a clear summary, relevant issue links, and screenshots for UI changes. Note any migration or seed updates.
+- Current history is minimal (`Initial commit`), so use short, imperative commit messages (for example `Add admin menu editor`).
+- Keep commits focused and atomic; avoid mixing unrelated refactors.
+- PRs should include: concise summary, linked issue (if any), screenshots for UI changes, and notes for schema/seed/env updates.
+- Confirm `npm run lint` and `npm run test` pass before requesting review.
 
-## Configuration & Security
-- Keep secrets in `.env` only. Required variables include `DATABASE_URL`, `NEXTAUTH_SECRET`, and `NEXTAUTH_URL`.
+## Security & Configuration Tips
+- Store secrets only in `.env` (for example `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`).
 - Never commit credentials or production connection strings.
+- When changing schema/auth behavior, document migration and environment impacts in the PR.

@@ -30,8 +30,9 @@ export default function SignIn() {
       <form onSubmit={handleSubmit} className="bg-white p-8 border border-warmth/20 shadow-lg w-full max-w-md">
         <h1 className="text-2xl font-serif text-thought mb-6">Vivartana Admin</h1>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-thought mb-2">Email</label>
+          <label htmlFor="email" className="block text-sm font-medium text-thought mb-2">Email</label>
           <input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -40,8 +41,9 @@ export default function SignIn() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-sm font-medium text-thought mb-2">Password</label>
+          <label htmlFor="password" className="block text-sm font-medium text-thought mb-2">Password</label>
           <input
+            id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

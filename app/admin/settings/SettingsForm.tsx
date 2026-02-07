@@ -19,11 +19,13 @@ function SubmitButton() {
 export default function SettingsForm({ 
   heroStatement, 
   pillarsDescription,
-  aboutBio
+  aboutBio,
+  homeContent
 }: { 
   heroStatement: string
   pillarsDescription: string
   aboutBio: string
+  homeContent: string
 }) {
   return (
     <form action={updateSiteSettings} className="space-y-8 bg-white p-8 border border-warmth/20">
@@ -58,6 +60,19 @@ export default function SettingsForm({
           className="w-full p-3 border border-warmth/30 focus:border-thought outline-none"
         />
         <p className="text-sm text-thought/60 mt-1">Short biography displayed on the Home page.</p>
+      </div>
+
+      <div>
+        <label className="block text-thought font-medium mb-2">Home Content (JSON)</label>
+        <textarea
+          name="home_content"
+          defaultValue={homeContent}
+          rows={18}
+          className="w-full p-3 border border-warmth/30 focus:border-thought outline-none font-mono text-sm"
+        />
+        <p className="text-sm text-thought/60 mt-1">
+          Must be valid JSON. Update headlines, section copy, trust markers, and the CTA.
+        </p>
       </div>
 
       <SubmitButton />

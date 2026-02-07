@@ -3,8 +3,8 @@ import PostForm from "../PostForm"
 import { notFound } from "next/navigation"
 import { WRITING_CATEGORIES } from "@/lib/writing"
 
-export default async function EditPostPage({ params }: { params: { id: string } }) {
-  const { id } = params
+export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   
   const post = await prisma.post.findUnique({
     where: { id }

@@ -5,6 +5,11 @@ import { revalidatePath } from "next/cache"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth"
 import { sanitizeRichText } from "@/lib/sanitize"
+import {
+  SITE_NAVIGATION,
+  getDefaultEditablePages,
+  getDefaultPageContent,
+} from "@/lib/site-structure"
 
 async function requireAdmin() {
   const session = await getServerSession(authOptions)
@@ -19,6 +24,14 @@ function slugify(input: string) {
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "")
+}
+
+function normalizePageSlug(input: string) {
+  return input
+    .split("/")
+    .map((segment) => slugify(segment))
+    .filter(Boolean)
+    .join("/")
 }
 
 async function generateUniquePostSlug(title: string) {
@@ -39,6 +52,7 @@ export async function updateSiteSettings(formData: FormData) {
   const heroStatement = formData.get('hero_statement') as string
   const pillarsJson = formData.get('pillars_description') as string
   const aboutBio = formData.get('about_bio') as string
+  const homeContentJson = formData.get('home_content') as string
 
   if (heroStatement) {
     await prisma.siteSetting.upsert({
@@ -67,6 +81,19 @@ export async function updateSiteSettings(formData: FormData) {
       })
     } catch (e) {
       throw new Error("Invalid JSON for pillars")
+    }
+  }
+
+  if (homeContentJson) {
+    try {
+      JSON.parse(homeContentJson)
+      await prisma.siteSetting.upsert({
+        where: { key: 'home_content' },
+        update: { value: homeContentJson },
+        create: { key: 'home_content', value: homeContentJson }
+      })
+    } catch (e) {
+      throw new Error("Invalid JSON for home content")
     }
   }
 
@@ -120,6 +147,63 @@ export async function updateMenuItem(id: string, formData: FormData) {
   revalidatePath('/admin/menu')
 }
 
+export async function syncDefaultStructure() {
+  await requireAdmin()
+
+  await prisma.menuItem.deleteMany({})
+
+  for (let i = 0; i < SITE_NAVIGATION.length; i++) {
+    const item = SITE_NAVIGATION[i]
+
+    if (item.children && item.basePath) {
+      const parent = await prisma.menuItem.create({
+        data: {
+          title: item.title,
+          order: i,
+          url: item.url,
+        },
+      })
+
+      for (let j = 0; j < item.children.length; j++) {
+        const child = item.children[j]
+        const fullPath = `/${item.basePath}/${child.slug}`
+
+        await prisma.menuItem.create({
+          data: {
+            title: child.title,
+            order: j,
+            parentId: parent.id,
+            url: fullPath,
+          },
+        })
+      }
+
+      continue
+    }
+
+    await prisma.menuItem.create({
+      data: { title: item.title, order: i, url: item.url },
+    })
+  }
+
+  const defaultPages = getDefaultEditablePages()
+  for (const page of defaultPages) {
+    await prisma.page.upsert({
+      where: { slug: page.slug },
+      update: {},
+      create: {
+        title: page.title,
+        slug: page.slug,
+        content: getDefaultPageContent(page.title),
+      },
+    })
+  }
+
+  revalidatePath('/')
+  revalidatePath('/admin/menu')
+  revalidatePath('/admin/pages')
+}
+
 export async function updatePost(id: string, formData: FormData) {
   await requireAdmin()
   const title = formData.get('title') as string
@@ -147,7 +231,8 @@ export async function updatePage(id: string, formData: FormData) {
   const title = formData.get('title') as string
   const content = sanitizeRichText(formData.get('content') as string)
 
-  await prisma.page.update({
+  const existingPage = await prisma.page.findUnique({ where: { id } })
+  const updatedPage = await prisma.page.update({
     where: { id },
     data: {
       title,
@@ -155,6 +240,44 @@ export async function updatePage(id: string, formData: FormData) {
     }
   })
 
+  if (existingPage) {
+    revalidatePath(`/${existingPage.slug}`)
+  }
+  revalidatePath(`/${updatedPage.slug}`)
+  revalidatePath('/')
+  revalidatePath('/admin/pages')
+}
+
+export async function createPage(formData: FormData) {
+  await requireAdmin()
+
+  const title = (formData.get('title') as string)?.trim()
+  const rawSlug = (formData.get('slug') as string) || ""
+  const content = sanitizeRichText(formData.get('content') as string)
+
+  if (!title) {
+    throw new Error("Title is required")
+  }
+
+  const slug = normalizePageSlug(rawSlug)
+  if (!slug) {
+    throw new Error("Valid slug is required")
+  }
+
+  const existing = await prisma.page.findUnique({ where: { slug } })
+  if (existing) {
+    throw new Error("A page with this slug already exists")
+  }
+
+  const page = await prisma.page.create({
+    data: {
+      title,
+      slug,
+      content: content || getDefaultPageContent(title),
+    },
+  })
+
+  revalidatePath(`/${page.slug}`)
   revalidatePath('/')
   revalidatePath('/admin/pages')
 }

@@ -20,7 +20,7 @@ export default async function AdminLayout({
     { href: "/admin/settings", label: "Global Settings", icon: Settings },
     { href: "/admin/pages", label: "Pages Content", icon: FileText },
     { href: "/admin/menu", label: "Menu Management", icon: Menu },
-    { href: "/admin/writing", label: "Writing / Blog", icon: PenTool },
+    { href: "/admin/writing", label: "Articles", icon: PenTool },
     { href: "/admin/enquiries", label: "Enquiries", icon: Mail },
   ]
 

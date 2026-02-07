@@ -3,6 +3,12 @@ import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 import { WRITING_CATEGORIES } from '../lib/writing'
+import {
+  SITE_NAVIGATION,
+  getDefaultEditablePages,
+  getDefaultPageContent,
+} from '../lib/site-structure'
+import { DEFAULT_HOME_CONTENT } from '../lib/home-content'
 
 const prisma = new PrismaClient()
 
@@ -22,17 +28,10 @@ async function main() {
 
   // 2. Menu Items & Pages
   // We will create Pages for each menu item to ensure the site is not static HTML.
-  const slugify = (input: string) =>
-    input
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '')
-
   const createSection = async (
     title: string,
     order: number,
-    children: Array<{ title: string; slug?: string }>,
+    children: Array<{ title: string; slug: string }>,
     basePath: string,
     parentUrl?: string
   ) => {
@@ -48,7 +47,7 @@ async function main() {
     // Create Children
     for (let i = 0; i < children.length; i++) {
       const childTitle = children[i].title
-      const childSlug = children[i].slug ?? slugify(childTitle)
+      const childSlug = children[i].slug
       const fullPath = `/${basePath}/${childSlug}`
 
       // Create Menu Item
@@ -60,17 +59,6 @@ async function main() {
           url: fullPath,
         },
       })
-
-      // Create Content Page for this route
-      await prisma.page.upsert({
-        where: { slug: `${basePath}/${childSlug}` },
-        update: {},
-        create: {
-          title: childTitle,
-          slug: `${basePath}/${childSlug}`,
-          content: `<p>This is the default content for <strong>${childTitle}</strong>. You can edit this in the Admin Panel.</p>`,
-        },
-      })
     }
   }
 
@@ -78,77 +66,30 @@ async function main() {
   await prisma.menuItem.deleteMany({})
   // We keep Pages/Posts if they exist, or upsert them.
 
-  // About the Founder (Home)
-  await createSection(
-    'About the Founder',
-    0,
-    [
-      { title: 'Hero Positioning', slug: 'hero-positioning' },
-      { title: 'Journey', slug: 'journey' },
-      { title: 'Vivartana', slug: 'vivartana' },
-      { title: 'Cadeus Consulting', slug: 'cadeus-consulting' },
-      { title: 'Values', slug: 'values' },
-    ],
-    'about',
-    '/'
-  )
+  for (let i = 0; i < SITE_NAVIGATION.length; i++) {
+    const item = SITE_NAVIGATION[i]
+    if (item.children && item.basePath) {
+      await createSection(item.title, i, item.children, item.basePath, item.url)
+      continue
+    }
 
-  // Engage with Us
-  await createSection(
-    'Engage with Us',
-    1,
-    [
-      { title: 'For Individuals', slug: 'for-individuals' },
-      { title: 'For Organisations', slug: 'for-organisations' },
-      { title: 'Engagement Models', slug: 'engagement-models' },
-      { title: 'Onboarding', slug: 'onboarding' },
-    ],
-    'engage'
-  )
+    await prisma.menuItem.create({
+      data: { title: item.title, order: i, url: item.url }
+    })
+  }
 
-  // Knowledge Assets
-  await createSection(
-    'Knowledge Assets',
-    2,
-    [
-      { title: 'Frameworks & IP', slug: 'frameworks-ip' },
-      { title: 'Case Studies', slug: 'case-studies' },
-      { title: 'Papers & Concept Notes', slug: 'papers-notes' },
-      { title: 'Research Artifacts', slug: 'research-artifacts' },
-    ],
-    'knowledge'
-  )
-
-  // Ongoing Research
-  await createSection(
-    'Ongoing Research',
-    3,
-    [
-      { title: 'Research Theme', slug: 'theme' },
-      { title: 'Methodology', slug: 'methodology' },
-      { title: 'Evolution of Thought', slug: 'evolution' },
-      { title: 'Practice Implications', slug: 'implications' },
-    ],
-    'research'
-  )
-
-  // Resources
-  await createSection(
-    'Resources',
-    4,
-    [
-      { title: 'enVisions', slug: 'envisions' },
-      { title: 'Articles / Blogs', slug: 'articles' },
-      { title: 'Downloads', slug: 'downloads' },
-      { title: 'FAQs', slug: 'faqs' },
-    ],
-    'resources'
-  )
-
-  // Contact
-  await prisma.menuItem.create({
-    data: { title: 'Contact', order: 5, url: '/contact' }
-  })
+  const defaultPages = getDefaultEditablePages()
+  for (const page of defaultPages) {
+    await prisma.page.upsert({
+      where: { slug: page.slug },
+      update: {},
+      create: {
+        title: page.title,
+        slug: page.slug,
+        content: getDefaultPageContent(page.title),
+      },
+    })
+  }
 
   // 3. Seed Posts
   const postSlug = 'example-article'
@@ -170,7 +111,7 @@ async function main() {
     update: {},
     create: {
       key: 'hero_statement',
-      value: 'Hero Statement: High impact. Minimal distraction.',
+      value: 'How your organisation responds when things go wrong tells the real story.',
     },
   })
   
@@ -179,7 +120,7 @@ async function main() {
     update: {},
     create: {
       key: 'about_bio',
-      value: '6-8 lines of bio placeholder. The founder blends engineering, psychology, and research to guide high-stakes transformation.',
+      value: 'Aumlan Guha is the Founder of Vivartana and an Organisational Stress Response Specialist and Transformation Partner.',
     },
   })
 
@@ -189,11 +130,22 @@ async function main() {
     create: {
       key: 'pillars_description',
       value: JSON.stringify([
-        "Engage with Us",
-        "Knowledge Assets",
-        "Ongoing Research",
-        "Resources"
+        "How teams perceive and interpret emerging challenges",
+        "How people coordinate under ambiguity",
+        "How leadership behaviour shapes organisational response",
+        "How roles align with cognitive strengths",
+        "How Cognitive Diversity and Neurodiversity become performance assets",
+        "How the organisation holds together under stress"
       ]),
+    },
+  })
+
+  await prisma.siteSetting.upsert({
+    where: { key: 'home_content' },
+    update: {},
+    create: {
+      key: 'home_content',
+      value: JSON.stringify(DEFAULT_HOME_CONTENT),
     },
   })
   

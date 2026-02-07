@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
+import { getEditablePage } from "@/lib/editable-pages"
 
 export default async function WritingIndexPage({
   searchParams,
@@ -7,6 +8,7 @@ export default async function WritingIndexPage({
   searchParams: { category?: string }
 }) {
   const { category } = searchParams
+  const editablePage = await getEditablePage("writing")
 
   const where = {
     published: true,
@@ -28,10 +30,22 @@ export default async function WritingIndexPage({
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
       <div className="container mx-auto max-w-5xl">
-        <h1 className="text-4xl md:text-5xl font-serif text-thought mb-4">Articles / Blogs</h1>
-        <p className="text-thought/60 text-lg mb-12 max-w-2xl">
-          Essays and reflections across individuals, teams, organisations, and research.
-        </p>
+        {editablePage ? (
+          <section className="section-card rounded-2xl p-8 md:p-10 mb-12">
+            <h1 className="text-4xl md:text-5xl font-serif text-thought mb-6">{editablePage.title}</h1>
+            <div
+              className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-thought prose-p:text-thought/85 prose-li:text-thought/85 prose-a:text-action"
+              dangerouslySetInnerHTML={{ __html: editablePage.content }}
+            />
+          </section>
+        ) : (
+          <>
+            <h1 className="text-4xl md:text-5xl font-serif text-thought mb-4">Articles</h1>
+            <p className="text-thought/60 text-lg mb-12 max-w-2xl">
+              Essays and reflections across individuals, teams, organisations, and research.
+            </p>
+          </>
+        )}
 
         <div className="flex flex-col md:flex-row gap-12">
           {/* Sidebar / Filter */}
