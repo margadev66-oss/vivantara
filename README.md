@@ -68,6 +68,17 @@ Log in with the credentials created during the seed step.
 
 `NEXTAUTH_SECRET`/`AUTH_SECRET` is required in production. If missing, NextAuth throws `NO_SECRET` and admin login fails.
 
+### AWS Amplify (SSR)
+
+This repo includes an `amplify.yml` that writes selected Amplify environment variables into `.env.production` before running `next build`.
+
+Set these in Amplify **App settings -> Environment variables**:
+- `DATABASE_URL`
+- `NEXTAUTH_SECRET` (or `AUTH_SECRET`)
+- `NEXTAUTH_URL` (your deployed HTTPS URL)
+
+If neither `NEXTAUTH_SECRET` nor `AUTH_SECRET` is set, the Amplify build now fails early with a clear error.
+
 ### Database Migration on Production
 
 Ensure you run migrations against your production database during the build process or manually via CLI.
