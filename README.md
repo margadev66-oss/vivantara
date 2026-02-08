@@ -62,9 +62,11 @@ Log in with the credentials created during the seed step.
 2.  Import the project into Vercel.
 3.  Configure Environment Variables in Vercel Project Settings:
     - `DATABASE_URL`: Your PostgreSQL connection string (e.g., from Neon, Supabase, or Railway).
-    - `NEXTAUTH_SECRET`: A random string (generate with `openssl rand -base64 32`).
+    - `NEXTAUTH_SECRET` (or `AUTH_SECRET`): A random string (generate with `openssl rand -base64 32`).
     - `NEXTAUTH_URL`: The URL of your deployed site (e.g., `https://vivantara.vercel.app`).
 4.  Redeploy.
+
+`NEXTAUTH_SECRET`/`AUTH_SECRET` is required in production. If missing, NextAuth throws `NO_SECRET` and admin login fails.
 
 ### Database Migration on Production
 

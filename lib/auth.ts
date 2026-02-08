@@ -3,7 +3,10 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 
+const authSecret = process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET
+
 export const authOptions: NextAuthOptions = {
+  secret: authSecret,
   // adapter: PrismaAdapter(prisma), // Not strictly necessary for Credentials only but good practice
   session: {
     strategy: "jwt",
