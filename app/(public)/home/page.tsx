@@ -154,7 +154,7 @@ function AboutFounder({ content }: { content: typeof DEFAULT_HOME_CONTENT.about_
                     </h2>
                     <div className="relative w-full aspect-[4/5] overflow-hidden rounded-2xl border border-warmth/20">
                         <Image
-                            src="/founder-photo.jpg"
+                            src="/potrait.png"
                             alt="Founder portrait"
                             fill
                             sizes="(min-width: 1024px) 32vw, 100vw"
@@ -162,7 +162,7 @@ function AboutFounder({ content }: { content: typeof DEFAULT_HOME_CONTENT.about_
                         />
                     </div>
                 </div>
-                <div className="lg:col-span-7 space-y-6 text-lg text-thought/80 leading-relaxed">
+                <div className="lg:col-span-7 h-full flex flex-col justify-end space-y-6 text-lg text-thought/80 leading-relaxed">
                     <p>{content.body_1}</p>
                     <p>{content.body_2}</p>
                     <Link href="/contact" className="inline-flex items-center gap-2 text-action font-medium">
