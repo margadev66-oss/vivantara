@@ -11,9 +11,9 @@ const researchFocusAreas = [
 
 const practicalFrameworks = [
   "Organisational Stress Response",
-  "ORI Scan (Organisational Response Imaging)",
-  "Adaptive Business Operating System (ABOS)",
-  "Antifragility Achievement Index (AAI)",
+  "ORI Scan™ (Organisational Response Imaging)",
+  "Organisational Operating System (OOS™)",
+  "Antifragility Achievement Index (AAI™)",
 ]
 
 export default async function OngoingResearchIntroductionPage() {
@@ -25,7 +25,7 @@ export default async function OngoingResearchIntroductionPage() {
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
       <div className="container mx-auto max-w-5xl">
-        <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Introduction to the Research</h1>
+        <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Introduction</h1>
 
         <div className="space-y-6 text-thought/75 text-lg leading-relaxed max-w-4xl mb-14">
           <p>
@@ -86,7 +86,7 @@ export default async function OngoingResearchIntroductionPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             This research is ongoing and continues to shape how Vivartana approaches organisational transformation in
             real-world settings.
           </p>

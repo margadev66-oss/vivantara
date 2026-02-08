@@ -3,13 +3,36 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { getEditablePage } from "@/lib/editable-pages"
 
+const ENGAGE_CHILDREN = [
+  { title: "Services Overview", url: "/engage/services-overview" },
+  { title: "How It Works", url: "/engage/how-it-works" },
+]
+
+function normalizeEngageCards(
+  children: Array<{ id: string; title: string; url: string | null; order: number }>
+) {
+  const byUrl = new Map(children.map((item) => [item.url, item]))
+
+  return ENGAGE_CHILDREN.map((item, index) => {
+    const existing = byUrl.get(item.url)
+    return {
+      id: existing?.id ?? `engage-card-fallback-${index}`,
+      title: item.title,
+      url: item.url,
+      order: index,
+    }
+  })
+}
+
 export default async function EngageIndex() {
   const editablePage = await getEditablePage("engage")
   const menu = await prisma.menuItem.findFirst({
     where: { title: "Engage with Us" },
     include: { children: { orderBy: { order: "asc" } } }
   })
-  const visibleChildren = menu?.children.filter((item) => item.url !== "/engage/individuals")
+  const visibleChildren = menu?.children
+    ? normalizeEngageCards(menu.children)
+    : []
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
@@ -42,7 +65,7 @@ export default async function EngageIndex() {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {visibleChildren?.map((item) => (
+          {visibleChildren.map((item) => (
             <Link 
               key={item.id} 
               href={item.url || "#"}

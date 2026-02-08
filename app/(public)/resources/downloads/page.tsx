@@ -3,8 +3,8 @@ import { getEditablePage } from "@/lib/editable-pages"
 
 const downloadTopics = [
   "Overview of Organisational Stress Response",
-  "Introduction to ORI Scan (Organisational Response Imaging)",
-  "Understanding the Adaptive Business Operating System (ABOS)",
+  "Introduction to ORI Scan™ (Organisational Response Imaging)",
+  "Understanding the Organisational Operating System (OOS™)",
   "Notes on Cognitive Diversity and Neurodiversity in organisations",
   "Session briefs and discussion guides",
 ]
@@ -52,10 +52,10 @@ export default async function ResourcesDownloadsPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <p className="text-warmth/90 text-lg leading-relaxed mb-4">
+          <p className="text-white text-lg leading-relaxed mb-4">
             New resources will be added here as Vivartana&apos;s work and research continue to evolve.
           </p>
-          <p className="text-warmth/90 text-lg leading-relaxed">Browse available downloads.</p>
+          <p className="text-white text-lg leading-relaxed">Browse available downloads.</p>
         </section>
       </div>
     </main>

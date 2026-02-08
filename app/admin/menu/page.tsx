@@ -22,7 +22,8 @@ export default async function MenuPage() {
         <div>
           <h2 className="text-lg font-serif text-thought">Sync Default Structure</h2>
           <p className="text-sm text-thought/60">
-            Rebuilds the navigation to the updated sitemap (Engage, Knowledge Assets, Ongoing Research, Resources, Contact)
+            Rebuilds the navigation to the updated sitemap (Engage with Us, Knowledge Assets, Ongoing Research, Resources, Contact)
+            including Engage children (Services Overview, How It Works),
             and ensures all default pages exist. Existing menu items will be replaced.
           </p>
         </div>

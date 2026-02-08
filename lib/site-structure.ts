@@ -21,7 +21,7 @@ export const SITE_NAVIGATION: NavItem[] = [
     url: "/engage",
     basePath: "engage",
     children: [
-      { title: "Organisations", slug: "organisations" },
+      { title: "Services Overview", slug: "services-overview" },
       { title: "How It Works", slug: "how-it-works" },
     ],
   },

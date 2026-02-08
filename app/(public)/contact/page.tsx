@@ -25,7 +25,7 @@ export default async function ContactPage() {
                 <h2 className="text-3xl font-serif text-thought mb-5">What to Expect</h2>
                 <p className="text-thought/75 text-lg leading-relaxed mb-8">
                   An initial conversation to understand your context, challenges, and interest areas. From there, the
-                  possibility of beginning with an ORI Scan (Organisational Response Imaging) can be explored.
+                  possibility of beginning with an ORI Scan™ (Organisational Response Imaging) can be explored.
                 </p>
 
                 <h3 className="text-2xl font-serif text-thought mb-4">Reach Out</h3>

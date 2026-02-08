@@ -66,7 +66,7 @@ export default async function OngoingResearchDesignMethodologyPage() {
         <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-10">
           <h2 className="text-3xl font-serif text-thought mb-5">Connection to Vivartana&apos;s Practice</h2>
           <p className="text-thought/75 text-lg leading-relaxed">
-            The ORI Scan and the focus on Organisational Stress Response draw inspiration from this research design.
+            The ORI Scan™ and the focus on Organisational Stress Response draw inspiration from this research design.
           </p>
           <p className="text-thought/75 text-lg leading-relaxed mt-4">
             They translate research thinking into structured organisational engagement.
@@ -87,7 +87,7 @@ export default async function OngoingResearchDesignMethodologyPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             The methodology is intended to build a rigorous, evidence-informed understanding of how organisations can
             progressively strengthen their ability to function coherently when tested.
           </p>

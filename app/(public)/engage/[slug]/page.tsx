@@ -1,6 +1,16 @@
 import { prisma } from "@/lib/prisma"
+import { redirect } from "next/navigation"
 
 async function GenericPage({ params, section }: { params: { slug: string }, section: string }) {
+  const legacySlugMap: Record<string, string> = {
+    services: "services-overview",
+  }
+
+  const mappedSlug = legacySlugMap[params.slug]
+  if (mappedSlug) {
+    redirect(`/${section}/${mappedSlug}`)
+  }
+
   const { slug } = params
   const fullSlug = `${section}/${slug}`
 

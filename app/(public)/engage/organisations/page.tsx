@@ -65,13 +65,13 @@ export default async function EngageOrganisationsPage() {
 
         <div className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-4">Call to Action</h2>
-          <p className="text-warmth/85 text-lg leading-relaxed mb-8">
+          <p className="text-white text-lg leading-relaxed mb-8">
             If you are curious about how your organisation truly behaves when tested, Vivartana would be glad to begin
-            with an ORI Scan.
+            with an ORI Scan™.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-action text-white px-7 py-4 text-base font-medium hover:bg-white hover:text-thought transition-colors"
+            className="inline-flex items-center gap-2 bg-action text-white px-7 py-4 text-base font-medium hover:bg-action/90 transition-colors"
           >
             Start the conversation <ArrowRight size={18} />
           </Link>

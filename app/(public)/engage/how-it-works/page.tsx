@@ -31,9 +31,9 @@ export default async function EngageHowItWorksPage() {
 
         <section className="space-y-8 mb-14">
           <article className="border border-warmth/20 bg-white p-8 md:p-10">
-            <h2 className="text-3xl font-serif text-thought mb-5">Phase 1 - ORI Scan (Organisational Response Imaging)</h2>
+            <h2 className="text-3xl font-serif text-thought mb-5">Phase 1 - ORI Scan™ (Organisational Response Imaging)</h2>
             <div className="space-y-4 text-thought/75 text-lg leading-relaxed">
-              <p>The journey begins with ORI Scan.</p>
+              <p>The journey begins with ORI Scan™.</p>
               <p>
                 Through structured conversations, observations, and guided reflections, Vivartana images how the
                 organisation actually behaves when faced with stress, ambiguity, and disruption.
@@ -48,7 +48,7 @@ export default async function EngageHowItWorksPage() {
           <article className="border border-warmth/20 bg-white p-8 md:p-10">
             <h2 className="text-3xl font-serif text-thought mb-5">Phase 2 - Interpreting the Image</h2>
             <div className="space-y-4 text-thought/75 text-lg leading-relaxed">
-              <p>Insights from the ORI Scan are translated into clear focus areas.</p>
+              <p>Insights from the ORI Scan™ are translated into clear focus areas.</p>
               <p>These typically involve:</p>
               <ul className="space-y-3">
                 {phaseTwoFocusAreas.map((item) => (
@@ -78,7 +78,7 @@ export default async function EngageHowItWorksPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10 mb-10">
           <h2 className="text-3xl font-serif mb-4">The Iterative Cycle</h2>
-          <p className="text-warmth/85 text-lg leading-relaxed mb-6">After a defined period, the ORI Scan is repeated.</p>
+          <p className="text-white text-lg leading-relaxed mb-6">After a defined period, the ORI Scan™ is repeated.</p>
           <div className="flex flex-wrap items-center gap-3 mb-6">
             {cycleStages.map((stage) => (
               <span key={stage} className="px-4 py-2 rounded-full border border-white/20 text-sm uppercase tracking-wide">
@@ -86,7 +86,7 @@ export default async function EngageHowItWorksPage() {
               </span>
             ))}
           </div>
-          <p className="text-warmth/85 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             Each cycle allows the organisation to see how its behaviour under pressure is evolving.
           </p>
         </section>
@@ -95,18 +95,18 @@ export default async function EngageHowItWorksPage() {
           <h2 className="text-3xl font-serif text-thought mb-5">From Current State to Antifragility</h2>
           <div className="space-y-4 text-thought/75 text-lg leading-relaxed">
             <p>
-              At any point, the organisation operates at a certain level of maturity known as its Adaptive Business
-              Operating System (ABOS).
+              At any point, the organisation operates at a certain level of maturity known as its Organisational
+              Operating System (OOS™).
             </p>
             <p>
-              As successive cycles strengthen the ABOS, the organisation&apos;s Antifragility Achievement Index (AAI)
+              As successive cycles strengthen the OOS™, the organisation&apos;s Antifragility Achievement Index (AAI™)
               improves, indicating a growing ability to function coherently and grow stronger through stress and disruption.
             </p>
           </div>
         </section>
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             Real organisational change begins not with new processes, but with seeing how the organisation truly
             behaves when tested.
           </p>

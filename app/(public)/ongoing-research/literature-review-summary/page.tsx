@@ -35,7 +35,7 @@ export default async function OngoingResearchLiteratureReviewSummaryPage() {
         <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-10">
           <h2 className="text-3xl font-serif text-thought mb-6">Areas the Research Intends to Explore</h2>
           <p className="text-thought/75 text-lg leading-relaxed mb-6">
-            The literature review will examine scholarship related to:
+            The literature review will examine studies related to:
           </p>
           <ul className="space-y-3">
             {plannedAreas.map((area) => (
@@ -57,7 +57,7 @@ export default async function OngoingResearchLiteratureReviewSummaryPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             This review will form the academic foundation for the ongoing research and its practical applications
             through Vivartana.
           </p>

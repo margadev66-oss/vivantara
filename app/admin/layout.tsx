@@ -4,6 +4,9 @@ import { redirect } from "next/navigation"
 import Link from "next/link"
 import { LayoutDashboard, Settings, Menu, PenTool, LogOut, Mail, FileText } from "lucide-react"
 
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 export default async function AdminLayout({
   children,
 }: {

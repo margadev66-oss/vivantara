@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation"
 
 const slugMap: Record<string, string> = {
-  individuals: "for-individuals",
-  organisations: "for-organisations",
-  teams: "for-organisations",
-  "how-vivartana-works": "engagement-models",
+  individuals: "individuals",
+  organisations: "organisations",
+  teams: "organisations",
+  services: "services-overview",
+  "how-vivartana-works": "how-it-works",
 }
 
 export default async function VivartanaSlugRedirect({

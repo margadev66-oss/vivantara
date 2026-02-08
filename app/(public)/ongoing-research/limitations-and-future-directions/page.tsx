@@ -91,7 +91,7 @@ export default async function OngoingResearchLimitationsFutureDirectionsPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             Recognising these boundaries ensures that the research remains transparent, rigorous, and open to further
             development in understanding how organisations function under pressure and how they can progressively
             strengthen their operating maturity.

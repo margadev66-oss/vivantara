@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vivartana | Business Management Advisory",
+  title: "Vivartana | Business Advisory",
   description: "Minimalist, intellectual, and warm business management advisory.",
 };
 

@@ -79,7 +79,7 @@ export async function updateSiteSettings(formData: FormData) {
         update: { value: pillarsJson },
         create: { key: 'pillars_description', value: pillarsJson }
       })
-    } catch (e) {
+    } catch {
       throw new Error("Invalid JSON for pillars")
     }
   }
@@ -92,7 +92,7 @@ export async function updateSiteSettings(formData: FormData) {
         update: { value: homeContentJson },
         create: { key: 'home_content', value: homeContentJson }
       })
-    } catch (e) {
+    } catch {
       throw new Error("Invalid JSON for home content")
     }
   }

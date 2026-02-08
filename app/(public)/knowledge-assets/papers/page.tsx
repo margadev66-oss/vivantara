@@ -64,7 +64,7 @@ export default async function KnowledgeAssetsPapersPage() {
         <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-10">
           <h2 className="text-3xl font-serif text-thought mb-5">From Research to Practice</h2>
           <p className="text-thought/75 text-lg leading-relaxed">
-            The ORI Scan, ABOS, and the focus on Organisational Stress Response are practical expressions of these
+            The ORI Scan™, OOS™, and the focus on Organisational Stress Response are practical expressions of these
             research insights.
           </p>
           <p className="text-thought/75 text-lg leading-relaxed mt-4">
@@ -84,7 +84,7 @@ export default async function KnowledgeAssetsPapersPage() {
         </section>
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             This research continues to evolve and directly informs Vivartana&apos;s approach to organisational
             transformation.
           </p>

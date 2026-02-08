@@ -3,6 +3,27 @@ import Link from "next/link";
 import { ChevronDown, Menu, ArrowRight } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 
+const ENGAGE_CHILDREN = [
+  { title: "Services Overview", url: "/engage/services-overview" },
+  { title: "How It Works", url: "/engage/how-it-works" },
+];
+
+function normalizeEngageChildren(
+  children: Array<{ id: string; title: string; url: string | null; order: number }>
+) {
+  const byUrl = new Map(children.map((child) => [child.url, child]));
+
+  return ENGAGE_CHILDREN.map((item, index) => {
+    const existing = byUrl.get(item.url);
+    return {
+      id: existing?.id ?? `engage-fallback-${index}`,
+      title: item.title,
+      url: item.url,
+      order: index,
+    };
+  });
+}
+
 export default async function Navbar() {
   const menuItems = await prisma.menuItem.findMany({
     where: { parentId: null },
@@ -23,10 +44,7 @@ export default async function Navbar() {
               <Image src="/logo.png" alt="Vivartana Logo" fill className="object-cover scale-110" priority />
             </div>
             <div>
-              <p className="font-serif text-[1.35rem] leading-none text-thought">Vivartana</p>
-              <p className="text-[0.62rem] uppercase tracking-[0.24em] text-warmth mt-1 hidden sm:block">
-                Organisational Response
-              </p>
+              <p className="font-serif text-[1.35rem] leading-none text-thought">Vivartana Transformation Systems</p>
             </div>
           </Link>
 
@@ -36,7 +54,7 @@ export default async function Navbar() {
                 {(() => {
                   const visibleChildren =
                     item.url === "/engage"
-                      ? item.children.filter((child) => child.url !== "/engage/individuals")
+                      ? normalizeEngageChildren(item.children)
                       : item.children;
 
                   return (
@@ -70,10 +88,13 @@ export default async function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="cta-button rounded-xl px-4 py-2.5 text-sm">
-              <span className="hidden sm:inline">Start Conversation</span>
-              <span className="sm:hidden">Connect</span>
-              <ArrowRight size={14} />
+            <Link
+              href="/contact"
+              className="cta-button self-center h-8 rounded-lg px-2 text-[10px] leading-none whitespace-nowrap sm:px-2.5 sm:text-[11px]"
+            >
+              <span className="hidden sm:inline">Start a Conversation</span>
+              <span className="sm:hidden">Start</span>
+              <ArrowRight size={11} />
             </Link>
 
             <details className="relative lg:hidden">
@@ -86,7 +107,7 @@ export default async function Navbar() {
                     {(() => {
                       const visibleChildren =
                         item.url === "/engage"
-                          ? item.children.filter((child) => child.url !== "/engage/individuals")
+                          ? normalizeEngageChildren(item.children)
                           : item.children;
 
                       return (

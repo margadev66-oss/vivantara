@@ -11,7 +11,7 @@ const primaryLinks = [
 ];
 
 const resourceLinks = [
-  { href: "/resources/envisions", label: "Envisions" },
+  { href: "/resources/envisions", label: "enVisions" },
   { href: "/resources/articles", label: "Articles" },
   { href: "/resources/downloads", label: "Downloads" },
   { href: "/resources/faqs", label: "FAQs" },
@@ -30,15 +30,14 @@ export default function Footer() {
                 <Image src="/logo.png" alt="Vivartana logo" fill className="object-cover scale-110" />
               </div>
               <div>
-                <p className="font-serif text-3xl leading-none">Vivartana</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-sandstone/80">Stress Response Practice</p>
+                <p className="font-serif text-[1.35rem] leading-none">Vivartana Transformation Systems</p>
               </div>
             </Link>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-sandstone/85">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85">
               Vivartana helps organisations strengthen how they sense, interpret, coordinate, and hold together when
               tested by uncertainty, disruption, and pressure.
             </p>
-            <p className="mt-5 text-sm text-sandstone/80">
+            <p className="mt-5 text-sm text-white/85">
               <span className="font-medium text-white">Email:</span>{" "}
               <a className="hover:text-white transition-colors" href="mailto:aumlaan@vivartana.com">
                 aumlaan@vivartana.com
@@ -47,8 +46,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="eyebrow !text-sandstone/80 mb-4">Explore</h3>
-            <ul className="space-y-2.5 text-sm text-sandstone/90">
+            <h3 className="eyebrow !text-white mb-4">Explore</h3>
+            <ul className="space-y-2.5 text-sm text-white/85">
               {primaryLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-white transition-colors">
@@ -60,8 +59,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="eyebrow !text-sandstone/80 mb-4">Library</h3>
-            <ul className="space-y-2.5 text-sm text-sandstone/90">
+            <h3 className="eyebrow !text-white mb-4">Library</h3>
+            <ul className="space-y-2.5 text-sm text-white/85">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-white transition-colors">
@@ -70,11 +69,11 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 flex items-center gap-4 text-sm text-sandstone/85">
-              <a href="https://www.linkedin.com/in/aumlan" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+            <div className="mt-6 flex items-center gap-4 text-sm text-white/85">
+              <a href="https://www.linkedin.com/in/aumlan" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 LinkedIn
               </a>
-              <a href="https://www.facebook.com/aumlaan/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+              <a href="https://www.facebook.com/aumlaan/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 Facebook
               </a>
             </div>
@@ -82,9 +81,9 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 px-6 py-5 md:px-10">
-          <div className="flex flex-col gap-2 text-xs text-sandstone/75 md:flex-row md:items-center md:justify-between">
-            <p>&copy; {year} Vivartana. All rights reserved.</p>
-            <p>Built for clarity under pressure.</p>
+          <div className="flex flex-col gap-2 text-xs text-white/75 md:flex-row md:items-center md:justify-between">
+            <p>&copy; {year} CADEUS Consulting OPC Private Limited. All rights reserved.</p>
+            <p>Diagnosing, decoding, designing, and implementing for growth under stress.</p>
           </div>
         </div>
       </div>

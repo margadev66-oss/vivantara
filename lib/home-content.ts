@@ -62,12 +62,10 @@ export type HomeContent = {
 
 export const DEFAULT_HOME_CONTENT: HomeContent = {
   hero: {
-    title: "How your organisation responds when things go wrong tells the real story.",
-    body_1:
-      "Organisations struggle not just because of poor strategy or weak processes.",
-    body_2:
-      "They struggle because of how people sense, interpret, coordinate, and hold together under pressure. Vivartana helps organisations strengthen this Organisational Stress Response, including how Cognitive Diversity and Neurodiversity are recognised and leveraged when it matters most.",
-    button_label: "Discover how your organisation truly responds under pressure",
+    title: "Pressure doesn't break organisations. It reveals misalignment.",
+    body_1: "Find clarity. Build alignment. Gain fortitude.",
+    body_2: "",
+    button_label: "Start a Conversation",
   },
   who_we_are: {
     eyebrow: "Who We Are",
@@ -112,14 +110,14 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
       "Vivartana follows a structured, iterative workflow to progressively strengthen organisational stress response.",
     steps: [
       {
-        title: "ORI Scan",
+        title: "ORI Scan™",
         description:
           "A proprietary diagnostic exercise to understand how the organisation actually behaves under pressure through structured conversations and observations.",
       },
       {
         title: "Roadmap",
         description:
-          "Insights from the ORI Scan are translated into practical focus areas involving leadership behaviour, role design, Cognitive Diversity and Neurodiversity, and psychosocial alignment.",
+          "Insights from the ORI Scan™ are translated into practical focus areas involving leadership behaviour, role design, Cognitive Diversity and Neurodiversity, and psychosocial alignment.",
       },
       {
         title: "Transformation Engagement",
@@ -130,7 +128,7 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
     cycle_title: "The Iterative Cycle",
     cycle_stages: ["Scan", "Interpret", "Strengthen", "Re-Scan"],
     cycle_body:
-      "Over successive cycles, organisations progressively strengthen their Adaptive Business Operating System (ABOS), their current operating maturity. As the ABOS matures and the Antifragility Achievement Index (AAI) improves, the organisation moves closer to antifragility: the ability to grow stronger through stress and disruption.",
+      "At any point, the organisation operates at a certain level of maturity known as its Organisational Operating System (OOS™). As successive cycles strengthen the OOS™, the organisation's Antifragility Achievement Index (AAI™) improves, indicating a growing ability to function coherently and grow stronger through stress and disruption.",
   },
   about_founder: {
     eyebrow: "About the Founder",
@@ -138,7 +136,7 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
     body_1:
       "Aumlan Guha is the Founder of Vivartana and an Organisational Stress Response Specialist and Transformation Partner.",
     body_2:
-      "With over two decades of experience in software delivery excellence and advanced studies in quality management and human resource management, he brings deep operational and organisational insight to transformation work. He is currently pursuing doctoral research into organisational intelligence and antifragile excellence in AI-enabled service organisations.",
+      "With over two decades of experience in software delivery excellence and advanced studies in quality management and human resource management, he brings deep operational and organisational insight to transformation work. He is currently pursuing doctoral research into organisational intelligence and antifragility excellence in AI-enabled service organisations.",
   },
   trust_markers: {
     eyebrow: "Trust Markers",
@@ -146,32 +144,32 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
     link_label: "Explore knowledge assets",
     items: [
       {
-        title: "22 years in software delivery excellence",
+        title: "Deep roots in complex delivery ecosystems",
         description:
-          "Experience spanning high-stakes delivery, leadership responsibility, and complex execution environments.",
+          "Experience spanning leadership responsibility, critical delivery mandates, and execution across complex organisational environments.",
       },
       {
-        title: "Advanced studies in Quality Management and Human Resource Management",
+        title: "Formal grounding in systems, quality, and human behaviour",
         description:
-          "Formal academic grounding that bridges systems thinking and organisational behaviour.",
+          "Academic foundations that integrate systems thinking, quality principles, and the behavioural dynamics of organisations.",
       },
       {
-        title: "Doctoral research in organisational intelligence and antifragility",
+        title: "Ongoing doctoral research into organisational antifragility",
         description:
-          "Current research focus on how organisations become stronger through uncertainty and disruption.",
+          "Ongoing doctoral inquiry into how organisations adapt, evolve, and grow stronger through uncertainty and disruption.",
       },
       {
-        title: "Experience across leadership, teams, and complex environments",
+        title: "Applied transformation across complex organisational settings",
         description:
-          "Hands-on transformation work across varied contexts where performance under pressure matters.",
+          "Transformation work across varied contexts where alignment, culture, and performance under pressure were critical.",
       },
     ],
-    insights_title: "Latest Insights",
-    insights_link_label: "View all articles",
+    insights_title: "More Resources",
+    insights_link_label: "More Resources",
   },
   cta: {
     title: "Curious about how your organisation truly responds when tested?",
-    button_label: "Start a conversation",
+    button_label: "Start a Conversation",
   },
 }
 

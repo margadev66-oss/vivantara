@@ -11,27 +11,27 @@ const frameworkSections = [
     ],
   },
   {
-    title: "ORI Scan - Organisational Response Imaging",
+    title: "ORI Scan™ - Organisational Response Imaging",
     paragraphs: [
-      "The ORI Scan functions like an imaging process for organisations.",
+      "The ORI Scan™ functions like an imaging process for organisations.",
       "Through structured conversations and observations, it reveals how the organisation actually behaves under pressure across six critical dimensions.",
       "These patterns often remain invisible in routine functioning but become decisive in moments of stress and disruption.",
     ],
   },
   {
-    title: "Adaptive Business Operating System (ABOS)",
+    title: "Organisational Operating System (OOS™)",
     paragraphs: [
       "At any point in time, an organisation operates at a certain level of maturity in how it responds to challenges.",
-      "This operating maturity is referred to as its Adaptive Business Operating System (ABOS).",
-      "As organisations strengthen the dimensions revealed by the ORI Scan, their ABOS progressively matures.",
+      "This operating maturity is referred to as its Organisational Operating System (OOS™).",
+      "As organisations strengthen the dimensions revealed by the ORI Scan™, their OOS™ progressively matures.",
     ],
   },
   {
-    title: "Antifragility & the Antifragility Achievement Index (AAI)",
+    title: "Antifragility & the Antifragility Achievement Index (AAI™)",
     paragraphs: [
       "Antifragility is the state where an organisation does not merely withstand stress but grows stronger through it.",
-      "The Antifragility Achievement Index (AAI) is used to observe how well an organisation's current ABOS supports coherent functioning under pressure.",
-      "As the ABOS matures, the AAI improves, indicating a movement toward antifragility.",
+      "The Antifragility Achievement Index (AAI™) is used to observe how well an organisation's current OOS™ supports coherent functioning under pressure.",
+      "As the OOS™ matures, the AAI™ improves, indicating a movement toward antifragility.",
     ],
   },
   {
@@ -76,10 +76,10 @@ export default async function KnowledgeAssetsFrameworksPage() {
         </section>
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             These frameworks together provide a structured way to understand and strengthen how organisations function when tested.
           </p>
-          <p className="text-warmth/90 text-lg leading-relaxed mt-4">
+          <p className="text-white text-lg leading-relaxed mt-4">
             They form the intellectual foundation of Vivartana&apos;s work.
           </p>
         </section>

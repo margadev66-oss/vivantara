@@ -11,8 +11,8 @@ const practicalGains = [
 
 const translatedFrameworks = [
   "Organisational Stress Response",
-  "ORI Scan (Organisational Response Imaging)",
-  "Adaptive Business Operating System (ABOS)",
+  "ORI Scan™ (Organisational Response Imaging)",
+  "Organisational Operating System (OOS™)",
 ]
 
 export default async function OngoingResearchPracticalImplicationsPage() {
@@ -83,7 +83,7 @@ export default async function OngoingResearchPracticalImplicationsPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <p className="text-warmth/90 text-lg leading-relaxed">
+          <p className="text-white text-lg leading-relaxed">
             As the research progresses, its practical implications will continue to inform how Vivartana supports
             organisations in strengthening their response to stress and disruption.
           </p>

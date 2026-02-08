@@ -15,7 +15,7 @@ const resourceHighlights = [
   },
   {
     title: "FAQs",
-    description: "Answers to common questions about ORI Scan, ABOS, and the approach.",
+    description: "Answers to common questions about ORI Scan™, OOS™, and the approach.",
   },
   {
     title: "Envisions",
@@ -79,7 +79,7 @@ export default async function ResourcesIndex() {
             </section>
 
             <section className="border border-thought/10 bg-thought text-white p-8 md:p-10 mb-14">
-              <p className="text-warmth/90 text-lg leading-relaxed">
+              <p className="text-white text-lg leading-relaxed">
                 Sometimes, clarity begins by seeing what has always been there, just from a different lens.
               </p>
             </section>

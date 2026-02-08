@@ -87,7 +87,7 @@ export default async function ResourcesArticlesPage({
 
             <section className="border border-thought/10 bg-thought text-white p-8 md:p-10 mb-12">
               <h2 className="text-3xl font-serif mb-5">Closing</h2>
-              <p className="text-warmth/90 text-lg leading-relaxed mb-4">
+              <p className="text-white text-lg leading-relaxed mb-4">
                 New articles are added periodically as Vivartana&apos;s work and research continue to evolve.
               </p>
               <a href="#latest-reflections" className="inline-block text-action hover:text-white transition-colors text-lg">

@@ -76,7 +76,7 @@ export default async function KnowledgeAssetsCaseStudiesPage() {
 
         <section className="border border-thought/10 bg-thought text-white p-8 md:p-10">
           <h2 className="text-3xl font-serif mb-5">Closing</h2>
-          <div className="space-y-4 text-warmth/90 text-lg leading-relaxed">
+          <div className="space-y-4 text-white text-lg leading-relaxed">
             <p>These patterns are not isolated incidents.</p>
             <p>
               They are signals of how an organisation&apos;s underlying dimensions shape behaviour when tested.
