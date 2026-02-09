@@ -134,9 +134,9 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
     eyebrow: "About the Founder",
     title: "Aumlan Guha",
     body_1:
-      "Aumlan Guha is the Founder of Vivartana and an Organisational Stress Response Specialist and Transformation Partner.",
+      "Aumlan Guha brings together an unusual mix of engineering, quality leadership, and a deep interest in human behaviour to understand organisations in a way few practitioners do. Over two decades in software delivery excellence placed him in environments where performance under pressure was a lived reality. In those moments, he observed a consistent pattern: When things went wrong, processes did not fail first. Alignment did. This led him to look beyond metrics and into the behavioural and structural properties that shape how organisations respond to stress.",
     body_2:
-      "With over two decades of experience in software delivery excellence and advanced studies in quality management and human resource management, he brings deep operational and organisational insight to transformation work. He is currently pursuing doctoral research into organisational intelligence and antifragility excellence in AI-enabled service organisations.",
+      "His postgraduate studies in Human Resource Management introduced him to the behavioural side of organisations. Years of delivery leadership grounded this understanding in practice. His later academic work in Quality Management strengthened the systems lens, and his ongoing training in Neuro-Linguistic Programming continues to deepen the human and cognitive dimension of his approach. His doctoral research into organisational antifragility now adds a scholarly layer to the same questions he encountered in practice for years. Through Vivartana, Aumlan works at the intersection of systems, behaviour, leadership intent, and organisational response under pressure — helping leaders, teams, and organisations realign when it matters most.",
   },
   trust_markers: {
     eyebrow: "Trust Markers",
