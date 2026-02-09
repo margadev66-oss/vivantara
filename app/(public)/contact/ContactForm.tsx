@@ -10,7 +10,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="bg-action text-white px-8 py-3 font-medium hover:bg-action/90 transition-colors disabled:opacity-50"
+      className="cta-button h-10 px-5 text-sm whitespace-nowrap sm:text-base disabled:cursor-not-allowed disabled:opacity-50"
     >
       {pending ? "Sending..." : "Send Message"}
     </button>
