@@ -1,10 +1,14 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const fullSlug = `about/${slug}`
 
-  const page = await prisma.page.findUnique({ where: { slug: fullSlug } })
+  const page = await withPrismaFallback(
+    () => prisma.page.findUnique({ where: { slug: fullSlug } }),
+    null,
+    `AboutSlug.page:${fullSlug}`
+  )
 
   if (!page) {
     return (

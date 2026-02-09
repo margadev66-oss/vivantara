@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 
 const DEFAULT_PAGE_MARKER = "This is the default content for"
 
@@ -7,7 +7,11 @@ function toPlainText(html: string) {
 }
 
 export async function getEditablePage(slug: string) {
-  const page = await prisma.page.findUnique({ where: { slug } })
+  const page = await withPrismaFallback(
+    () => prisma.page.findUnique({ where: { slug } }),
+    null,
+    `getEditablePage:${slug}`
+  )
   if (!page) {
     return null
   }

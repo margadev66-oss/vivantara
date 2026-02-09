@@ -5,7 +5,7 @@
   --color-thought: #1b2635;
   --color-warmth: #8f7457;
   --color-sandstone: #d7c2a7;
-  --color-action: #c55b3f;
+  --color-action: #E07B7B;
   --color-ink: #101925;
   --color-surface: #fffaf3;
   --color-surface-strong: #f5ebdd;
@@ -121,16 +121,16 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: 0.5rem;
-    background: #ff7f50;
+    background: var(--color-action);
     color: #fff;
     font-weight: 600;
-    border: 1px solid #e56f45;
+    border: 1px solid color-mix(in oklab, var(--color-action) 84%, black);
     transition: transform 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease;
   }
 
   .cta-button:hover {
     transform: translateY(-1px);
-    background: #e56f45;
+    background: color-mix(in oklab, var(--color-action) 90%, black);
   }
 
   .deep-panel {

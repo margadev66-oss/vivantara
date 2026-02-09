@@ -1,6 +1,6 @@
 import { type NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 
 const authSecret = process.env.NEXTAUTH_SECRET || process.env.AUTH_SECRET
@@ -26,11 +26,16 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email
-          }
-        })
+        const user = await withPrismaFallback(
+          () =>
+            prisma.user.findUnique({
+              where: {
+                email: credentials.email
+              }
+            }),
+          null,
+          "auth.authorize.userLookup"
+        )
 
         if (!user) {
           return null

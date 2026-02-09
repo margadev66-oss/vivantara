@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import Link from "next/link"
 import { getEditablePage } from "@/lib/editable-pages"
 
@@ -23,16 +23,26 @@ export default async function ResourcesArticlesPage({
     ...(category ? { category } : {})
   }
 
-  const posts = await prisma.post.findMany({
-    where,
-    orderBy: { createdAt: "desc" }
-  })
+  const posts = await withPrismaFallback(
+    () =>
+      prisma.post.findMany({
+        where,
+        orderBy: { createdAt: "desc" }
+      }),
+    [],
+    "ResourcesArticlesPage.posts"
+  )
 
-  const categories = await prisma.post.findMany({
-    where: { published: true },
-    select: { category: true },
-    distinct: ["category"]
-  })
+  const categories = await withPrismaFallback(
+    () =>
+      prisma.post.findMany({
+        where: { published: true },
+        select: { category: true },
+        distinct: ["category"]
+      }),
+    [],
+    "ResourcesArticlesPage.categories"
+  )
 
   const editablePage = await getEditablePage("resources/articles")
 

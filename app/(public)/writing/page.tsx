@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import Link from "next/link"
 import { getEditablePage } from "@/lib/editable-pages"
 
@@ -15,17 +15,27 @@ export default async function WritingIndexPage({
     ...(category ? { category } : {})
   }
 
-  const posts = await prisma.post.findMany({
-    where,
-    orderBy: { createdAt: 'desc' }
-  })
+  const posts = await withPrismaFallback(
+    () =>
+      prisma.post.findMany({
+        where,
+        orderBy: { createdAt: 'desc' }
+      }),
+    [],
+    "WritingIndexPage.posts"
+  )
 
   // Get all categories for filter sidebar/list
-  const categories = await prisma.post.findMany({
-    where: { published: true },
-    select: { category: true },
-    distinct: ['category']
-  })
+  const categories = await withPrismaFallback(
+    () =>
+      prisma.post.findMany({
+        where: { published: true },
+        select: { category: true },
+        distinct: ['category']
+      }),
+    [],
+    "WritingIndexPage.categories"
+  )
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">

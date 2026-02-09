@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, ArrowRight } from "lucide-react";
-import { prisma } from "@/lib/prisma";
+import { prisma, withPrismaFallback } from "@/lib/prisma";
 
 const ENGAGE_CHILDREN = [
   { title: "Services Overview", url: "/engage/services-overview" },
@@ -25,15 +25,30 @@ function normalizeEngageChildren(
 }
 
 export default async function Navbar() {
-  const menuItems = await prisma.menuItem.findMany({
-    where: { parentId: null },
-    include: {
-      children: {
+  const menuItems = await withPrismaFallback(
+    () =>
+      prisma.menuItem.findMany({
+        where: { parentId: null },
+        select: {
+          id: true,
+          title: true,
+          url: true,
+          order: true,
+          children: {
+            select: {
+              id: true,
+              title: true,
+              url: true,
+              order: true,
+            },
+            orderBy: { order: "asc" },
+          },
+        },
         orderBy: { order: "asc" },
-      },
-    },
-    orderBy: { order: "asc" },
-  });
+      }),
+    [],
+    "Navbar.menuItems"
+  );
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4 md:px-6">

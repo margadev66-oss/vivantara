@@ -1,14 +1,19 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { getEditablePage } from "@/lib/editable-pages"
 
 export default async function OngoingResearchIndex() {
   const editablePage = await getEditablePage("ongoing-research")
-  const menu = await prisma.menuItem.findFirst({
-    where: { title: "Ongoing Research" },
-    include: { children: { orderBy: { order: "asc" } } },
-  })
+  const menu = await withPrismaFallback(
+    () =>
+      prisma.menuItem.findFirst({
+        where: { title: "Ongoing Research" },
+        include: { children: { orderBy: { order: "asc" } } },
+      }),
+    null,
+    "OngoingResearchIndex.menu"
+  )
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">

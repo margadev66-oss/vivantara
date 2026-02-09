@@ -78,7 +78,7 @@ export default async function ResourcesFaqsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-action text-white px-7 py-4 text-base font-medium hover:bg-action/90 transition-colors"
+            className="cta-button px-7 py-4 text-base"
           >
             Start the conversation <ArrowRight size={18} />
           </Link>

@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import { redirect } from "next/navigation"
 
 async function GenericPage({ params, section }: { params: { slug: string }, section: string }) {
@@ -14,9 +14,14 @@ async function GenericPage({ params, section }: { params: { slug: string }, sect
   const { slug } = params
   const fullSlug = `${section}/${slug}`
 
-  const page = await prisma.page.findUnique({
-    where: { slug: fullSlug }
-  })
+  const page = await withPrismaFallback(
+    () =>
+      prisma.page.findUnique({
+        where: { slug: fullSlug }
+      }),
+    null,
+    `EngageSlug.page:${fullSlug}`
+  )
 
   if (!page) {
     return (

@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { getEditablePage } from "@/lib/editable-pages"
@@ -26,10 +26,15 @@ function normalizeEngageCards(
 
 export default async function EngageIndex() {
   const editablePage = await getEditablePage("engage")
-  const menu = await prisma.menuItem.findFirst({
-    where: { title: "Engage with Us" },
-    include: { children: { orderBy: { order: "asc" } } }
-  })
+  const menu = await withPrismaFallback(
+    () =>
+      prisma.menuItem.findFirst({
+        where: { title: "Engage with Us" },
+        include: { children: { orderBy: { order: "asc" } } }
+      }),
+    null,
+    "EngageIndex.menu"
+  )
   const visibleChildren = menu?.children
     ? normalizeEngageCards(menu.children)
     : []

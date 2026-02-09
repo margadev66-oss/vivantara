@@ -13,12 +13,15 @@ import { DEFAULT_HOME_CONTENT } from '../lib/home-content'
 const prisma = new PrismaClient()
 
 async function main() {
-  const password = await bcrypt.hash('password123', 10)
+  const password = await bcrypt.hash('rajeshwari@123123', 10)
 
   // 1. Admin User
   await prisma.user.upsert({
     where: { email: 'admin@vivartana.com' },
-    update: {},
+    update: {
+      password,
+      name: 'Admin',
+    },
     create: {
       email: 'admin@vivartana.com',
       name: 'Admin',

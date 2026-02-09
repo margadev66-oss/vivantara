@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 
 import Link from "next/link"
 
@@ -10,13 +10,18 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
   // A robust way is to store slug in MenuItem. I didn't add slug field, but I generated url.
   // I'll search MenuItem where url ends with slug.
 
-  const menuItem = await prisma.menuItem.findFirst({
-    where: {
-      url: {
-        contains: slug
-      }
-    }
-  })
+  const menuItem = await withPrismaFallback(
+    () =>
+      prisma.menuItem.findFirst({
+        where: {
+          url: {
+            contains: slug
+          }
+        }
+      }),
+    null,
+    `SectionSlug.menuItem:${slug}`
+  )
 
   if (!menuItem) {
     // If not a menu item, maybe just a category check?
@@ -28,13 +33,18 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
   const title = menuItem?.title || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
 
   // Fetch posts with this category
-  const posts = await prisma.post.findMany({
-    where: {
-      published: true,
-      category: title // Exact match on title needed.
-    },
-    orderBy: { createdAt: 'desc' }
-  })
+  const posts = await withPrismaFallback(
+    () =>
+      prisma.post.findMany({
+        where: {
+          published: true,
+          category: title // Exact match on title needed.
+        },
+        orderBy: { createdAt: 'desc' }
+      }),
+    [],
+    `SectionSlug.posts:${slug}`
+  )
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">

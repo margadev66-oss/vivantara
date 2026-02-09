@@ -1,12 +1,20 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const fullSlug = `knowledge-assets/${slug}`
 
   const page =
-    (await prisma.page.findUnique({ where: { slug: fullSlug } })) ??
-    (await prisma.page.findUnique({ where: { slug: `knowledge/${slug}` } }))
+    (await withPrismaFallback(
+      () => prisma.page.findUnique({ where: { slug: fullSlug } }),
+      null,
+      `KnowledgeAssetSlug.page:${fullSlug}`
+    )) ??
+    (await withPrismaFallback(
+      () => prisma.page.findUnique({ where: { slug: `knowledge/${slug}` } }),
+      null,
+      `KnowledgeAssetSlug.legacy:${slug}`
+    ))
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">

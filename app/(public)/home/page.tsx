@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import { DEFAULT_HOME_CONTENT, mergeHomeContent, type HomeContent } from "@/lib/home-content"
 import Link from "next/link"
 import Image from "next/image"
@@ -6,8 +6,16 @@ import { ArrowRight, BookOpenCheck, CheckCircle2, ChevronDown, ShieldCheck, Spar
 
 function Hero({ content }: { content: typeof DEFAULT_HOME_CONTENT.hero }) {
     return (
-        <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center bg-canvas px-6 overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-warmth/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
+        <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center px-6 overflow-hidden">
+            <Image
+                src="/hero.png"
+                alt="Abstract fabric-inspired background"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover object-[92%_18%] scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-canvas/88 via-canvas/34 to-transparent" />
 
             <div className="container mx-auto max-w-7xl relative z-10">
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-thought leading-tight mb-8 tracking-tight max-w-5xl">
@@ -62,7 +70,21 @@ function WhatWeDo({ content }: { content: typeof DEFAULT_HOME_CONTENT.what_we_do
             <div className="container mx-auto max-w-7xl">
                 <p className="text-sm uppercase tracking-widest text-action mb-4">{content.eyebrow}</p>
                 <h2 className="text-4xl md:text-5xl font-serif text-thought mb-8 max-w-4xl leading-tight">{content.title}</h2>
-                <p className="text-lg text-thought/80 leading-relaxed max-w-4xl mb-12">{content.intro}</p>
+                <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
+                    <p className="text-lg text-thought/80 leading-relaxed lg:col-span-7">{content.intro}</p>
+                    <div className="lg:col-span-5">
+                        <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-warmth/20 bg-white shadow-[0_16px_40px_-28px_rgba(16,25,37,0.35)] sm:h-72">
+                            <Image
+                                src="/mini.png"
+                                alt="Interlocking structures representing coordinated systems"
+                                fill
+                                sizes="(min-width: 1024px) 32vw, 100vw"
+                                className="object-cover object-[46%_44%] scale-[1.18]"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-canvas/40 to-transparent" />
+                        </div>
+                    </div>
+                </div>
 
                 <h3 className="text-2xl font-serif text-thought mb-6">{content.focus_title}</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -90,16 +112,30 @@ function WhyThisMatters({ content }: { content: typeof DEFAULT_HOME_CONTENT.why_
                     <h2 className="text-4xl md:text-5xl font-serif leading-tight">{content.title}</h2>
                 </div>
 
-                <div className="lg:col-span-7">
-                    <p className="text-lg text-white font-semibold leading-relaxed mb-6">{content.intro}</p>
-                    <ul className="space-y-3 mb-8">
-                        {content.pressure_signals.map((signal, index) => (
-                            <li key={`${signal}-${index}`} className="text-lg text-white/85 leading-relaxed">
-                                {signal}
-                            </li>
-                        ))}
-                    </ul>
-                    <p className="text-white text-lg font-medium leading-relaxed">{content.closing}</p>
+                <div className="lg:col-span-7 grid gap-8 lg:grid-cols-5 lg:items-start">
+                    <div className="lg:col-span-3">
+                        <p className="text-lg text-white font-semibold leading-relaxed mb-6">{content.intro}</p>
+                        <ul className="space-y-3 mb-8">
+                            {content.pressure_signals.map((signal, index) => (
+                                <li key={`${signal}-${index}`} className="text-lg text-white/85 leading-relaxed">
+                                    {signal}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="text-white text-lg font-medium leading-relaxed">{content.closing}</p>
+                    </div>
+                    <div className="lg:col-span-2">
+                        <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-white/15 shadow-[0_18px_44px_-28px_rgba(0,0,0,0.7)] sm:h-72 lg:h-full lg:min-h-[22rem]">
+                            <Image
+                                src="/bg.png"
+                                alt="Abstract connected strategy visual"
+                                fill
+                                sizes="(min-width: 1024px) 24vw, 100vw"
+                                className="object-cover object-[72%_34%] scale-[1.14]"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-thought/35 to-transparent" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -235,7 +271,11 @@ function CTA({ content }: { content: typeof DEFAULT_HOME_CONTENT.cta }) {
 }
 
 export default async function Home() {
-    const homeContentSetting = await prisma.siteSetting.findUnique({ where: { key: "home_content" } })
+    const homeContentSetting = await withPrismaFallback(
+        () => prisma.siteSetting.findUnique({ where: { key: "home_content" } }),
+        null,
+        "Home.homeContentSetting"
+    )
 
     let homeContent = DEFAULT_HOME_CONTENT
 

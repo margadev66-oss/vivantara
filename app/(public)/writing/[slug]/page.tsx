@@ -1,12 +1,17 @@
-import { prisma } from "@/lib/prisma"
+import { prisma, withPrismaFallback } from "@/lib/prisma"
 import { notFound } from "next/navigation"
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
-  const post = await prisma.post.findFirst({
-    where: { slug, published: true }
-  })
+  const post = await withPrismaFallback(
+    () =>
+      prisma.post.findFirst({
+        where: { slug, published: true }
+      }),
+    null,
+    `WritingSlug.post:${slug}`
+  )
 
   if (!post) {
     notFound()
