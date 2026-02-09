@@ -73,11 +73,11 @@ export default async function EngageServicesOverviewPage() {
           <p>Vivartana works at the point where these experiences meet.</p>
         </div>
 
-        <section className="mb-12">
+        <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-12">
           <h2 className="text-3xl font-serif text-thought mb-6">Where we engage</h2>
           <div className="space-y-8">
             {engagementAreas.map((area) => (
-              <article key={area.title} className="border border-warmth/20 bg-white p-8 md:p-10">
+              <article key={area.title} className="border border-warmth/20 bg-canvas p-8 md:p-10">
                 <h3 className="text-2xl font-serif text-thought mb-5">{area.title}</h3>
                 <ul className="space-y-3">
                   {area.points.map((point) => (

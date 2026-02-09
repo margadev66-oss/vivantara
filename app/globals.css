@@ -12,6 +12,8 @@
   
   --font-sans: "Avenir Next", "Manrope", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Iowan Old Style", "Baskerville Old Face", "Palatino Linotype", Georgia, serif;
+
+  --text-6xl: 2.75rem;
 }
 
 @layer base {
@@ -53,6 +55,24 @@
 }
 
 @layer components {
+  .public-shell section {
+    max-width: 80rem;
+    margin-inline: auto;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in oklab, var(--color-warmth) 18%, transparent),
+      0 26px 54px -40px rgba(16, 25, 37, 0.45);
+  }
+
+  .public-shell .container[class*="max-w-"] {
+    max-width: 80rem;
+  }
+
+  .public-shell main > section + section {
+    margin-top: 1rem;
+  }
+
   .page-wrap {
     position: relative;
   }
@@ -100,16 +120,17 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--color-action);
+    border-radius: 0.5rem;
+    background: #ff7f50;
     color: #fff;
     font-weight: 600;
-    border: 1px solid color-mix(in oklab, var(--color-action) 84%, black);
+    border: 1px solid #e56f45;
     transition: transform 220ms ease, background-color 220ms ease, color 220ms ease, border-color 220ms ease;
   }
 
   .cta-button:hover {
     transform: translateY(-1px);
-    background: color-mix(in oklab, var(--color-action) 82%, black);
+    background: #e56f45;
   }
 
   .deep-panel {

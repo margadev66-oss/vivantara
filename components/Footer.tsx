@@ -30,7 +30,7 @@ export default function Footer() {
                 <Image src="/logo.png" alt="Vivartana logo" fill className="object-cover scale-110" />
               </div>
               <div>
-                <p className="font-serif text-[1.35rem] leading-none">Vivartana Transformation Systems</p>
+                <p className="font-serif text-[1.35rem] leading-none">Vivartana Transformation Services</p>
               </div>
             </Link>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85">
@@ -90,3 +90,4 @@ export default function Footer() {
     </footer>
   );
 }
+

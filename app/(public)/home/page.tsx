@@ -23,10 +23,10 @@ function Hero({ content }: { content: typeof DEFAULT_HOME_CONTENT.hero }) {
 
                 <Link
                     href="/contact"
-                    className="cta-button inline-flex items-center gap-3 px-8 py-4 text-base md:text-lg"
+                    className="cta-button h-9 gap-2 px-4 text-xs whitespace-nowrap sm:text-sm"
                 >
                     <span>{content.button_label}</span>
-                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
             </div>
 
@@ -152,21 +152,21 @@ function AboutFounder({ content }: { content: typeof DEFAULT_HOME_CONTENT.about_
                     <h2 className="text-4xl md:text-5xl font-serif text-thought leading-tight mb-6">
                         {content.title}
                     </h2>
-                    <div className="relative w-full aspect-[4/5] overflow-hidden rounded-2xl border border-warmth/20">
+                    <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-full border border-warmth/20 bg-white sm:h-64 sm:w-64 md:h-72 md:w-72 lg:mx-0">
                         <Image
                             src="/potrait.png"
                             alt="Founder portrait"
                             fill
-                            sizes="(min-width: 1024px) 32vw, 100vw"
-                            className="object-cover"
+                            sizes="(min-width: 1024px) 18rem, 16rem"
+                            className="object-cover object-[50%_18%] scale-125"
                         />
                     </div>
                 </div>
                 <div className="lg:col-span-7 h-full flex flex-col justify-end space-y-6 text-lg text-thought/80 leading-relaxed">
                     <p>{content.body_1}</p>
                     <p>{content.body_2}</p>
-                    <Link href="/contact" className="inline-flex items-center gap-2 text-action font-medium">
-                        Start a Conversation <ArrowRight size={16} />
+                    <Link href="/contact" className="cta-button h-9 gap-2 px-4 text-xs whitespace-nowrap sm:text-sm w-fit">
+                        Start a Conversation <ArrowRight size={14} />
                     </Link>
                 </div>
             </div>
@@ -225,7 +225,7 @@ function CTA({ content }: { content: typeof DEFAULT_HOME_CONTENT.cta }) {
                 </h2>
                 <Link
                     href="/contact"
-                    className="inline-block bg-action text-white px-8 py-4 text-lg font-medium hover:bg-action/90 transition-all"
+                    className="cta-button h-10 px-5 text-sm whitespace-nowrap sm:text-base"
                 >
                     {content.button_label}
                 </Link>

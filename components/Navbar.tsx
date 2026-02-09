@@ -44,7 +44,7 @@ export default async function Navbar() {
               <Image src="/logo.png" alt="Vivartana Logo" fill className="object-cover scale-110" priority />
             </div>
             <div>
-              <p className="font-serif text-[1.35rem] leading-none text-thought">Vivartana Transformation Systems</p>
+              <p className="text-sm font-medium tracking-wide text-thought/78">Vivartana Transformation Services</p>
             </div>
           </Link>
 
@@ -88,10 +88,10 @@ export default async function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="cta-button self-center h-8 rounded-lg px-2 text-[10px] leading-none whitespace-nowrap sm:px-2.5 sm:text-[11px]"
-            >
+              <Link
+                href="/contact"
+                className="cta-button self-center h-8 rounded-lg px-2 text-[10px] leading-none whitespace-nowrap sm:px-2.5 sm:text-[11px]"
+              >
               <span className="hidden sm:inline">Start a Conversation</span>
               <span className="sm:hidden">Start</span>
               <ArrowRight size={11} />
@@ -141,3 +141,4 @@ export default async function Navbar() {
     </header>
   );
 }
+
