@@ -110,9 +110,9 @@ export default async function EngageServicesOverviewPage() {
           </p>
           <Link
             href="/engage/how-it-works"
-            className="inline-flex items-center gap-2 bg-action text-white px-7 py-4 text-base font-medium hover:bg-action/90 transition-colors"
+            className="cta-button h-10 gap-2 px-5 text-sm whitespace-nowrap sm:text-base"
           >
-            Understand how this works <ArrowRight size={18} />
+            Understand how this works <ArrowRight size={14} />
           </Link>
         </section>
       </div>
