@@ -43,7 +43,7 @@ function WhoWeAre({ content }: { content: typeof DEFAULT_HOME_CONTENT.who_we_are
             <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-14">
                 <div className="lg:col-span-5">
                     <p className="text-sm uppercase tracking-widest text-action mb-6">{content.eyebrow}</p>
-                    <h2 className="text-4xl md:text-5xl font-serif text-thought leading-tight mb-6">
+                    <h2 className="text-3xl md:text-4xl font-serif text-thought leading-tight mb-6">
                         {content.title}
                     </h2>
                 </div>
