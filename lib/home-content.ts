@@ -1,4 +1,4 @@
-export type HomeContent = {
+﻿export type HomeContent = {
   hero: {
     title: string
     body_1: string
@@ -110,14 +110,14 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
       "Vivartana follows a structured, iterative workflow to progressively strengthen organisational stress response.",
     steps: [
       {
-        title: "ORI Scan™",
+        title: "ORI Scanâ„¢",
         description:
           "A proprietary diagnostic exercise to understand how the organisation actually behaves under pressure through structured conversations and observations.",
       },
       {
         title: "Roadmap",
         description:
-          "Insights from the ORI Scan™ are translated into practical focus areas involving leadership behaviour, role design, Cognitive Diversity and Neurodiversity, and psychosocial alignment.",
+          "Insights from the ORI Scanâ„¢ are translated into practical focus areas involving leadership behaviour, role design, Cognitive Diversity and Neurodiversity, and psychosocial alignment.",
       },
       {
         title: "Transformation Engagement",
@@ -128,15 +128,15 @@ export const DEFAULT_HOME_CONTENT: HomeContent = {
     cycle_title: "The Iterative Cycle",
     cycle_stages: ["Scan", "Interpret", "Strengthen", "Re-Scan"],
     cycle_body:
-      "At any point, the organisation operates at a certain level of maturity known as its Organisational Operating System (OOS™). As successive cycles strengthen the OOS™, the organisation's Antifragility Achievement Index (AAI™) improves, indicating a growing ability to function coherently and grow stronger through stress and disruption.",
+      "At any point, the organisation operates at a certain level of maturity known as its Organisational Operating System (OOSâ„¢). As successive cycles strengthen the OOSâ„¢, the organisation's Antifragility Achievement Index (AAIâ„¢) improves, indicating a growing ability to function coherently and grow stronger through stress and disruption.",
   },
   about_founder: {
     eyebrow: "About the Founder",
     title: "Aumlan Guha",
     body_1:
-      "Aumlan Guha brings together an unusual mix of engineering, quality leadership, and a deep interest in human behaviour to understand organisations in a way few practitioners do. Over two decades in software delivery excellence placed him in environments where performance under pressure was a lived reality. In those moments, he observed a consistent pattern: When things went wrong, processes did not fail first. Alignment did. This led him to look beyond metrics and into the behavioural and structural properties that shape how organisations respond to stress.",
+      "Aumlan Guha brings together a rare mix of engineering, quality leadership, and a deep interest in human behaviour to understand organisations in a way few practitioners do. Over two decades in software delivery excellence placed him in environments where performance under pressure was a lived reality. In those moments, he observed a consistent pattern: When things went wrong, processes did not fail first. Alignment did. This led him to look beyond metrics and into the behavioural and structural properties that shape how organisations respond to stress.",
     body_2:
-      "His postgraduate studies in Human Resource Management introduced him to the behavioural side of organisations. Years of delivery leadership grounded this understanding in practice. His later academic work in Quality Management strengthened the systems lens, and his ongoing training in Neuro-Linguistic Programming continues to deepen the human and cognitive dimension of his approach. His doctoral research into organisational antifragility now adds a scholarly layer to the same questions he encountered in practice for years. Through Vivartana, Aumlan works at the intersection of systems, behaviour, leadership intent, and organisational response under pressure — helping leaders, teams, and organisations realign when it matters most.",
+      "His postgraduate studies in Human Resource Management introduced him to the behavioural side of organisations. His long years industry grounded this understanding in practice. His later academic work in Quality Management, along with ongoing training in Neuro-Linguistic Programming, strengthened both the systems and human lens of his approach. His doctoral research into organisational antifragility now adds a scholarly layer to these lived observations. Through Vivartana, Aumlan works at the intersection of systems, behaviour, leadership intent, and organisational response under pressure — helping leaders, teams, and organisations realign when it matters most.",
   },
   trust_markers: {
     eyebrow: "Trust Markers",
@@ -234,3 +234,4 @@ export function mergeHomeContent(overrides?: Partial<HomeContent>): HomeContent 
     },
   }
 }
+

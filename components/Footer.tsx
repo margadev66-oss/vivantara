@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <footer className="mt-24 px-6 pb-8">
-      <div className="mx-auto max-w-7xl rounded-[28px] border border-warmth/20 deep-panel text-white shadow-[0_26px_70px_-46px_rgba(10,16,24,0.7)]">
+      <div className="mx-auto max-w-7xl rounded-[28px] border border-thought/30 bg-ink text-white">
         <div className="grid gap-12 px-6 py-14 md:grid-cols-2 md:px-10 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link href="/home" className="inline-flex items-center gap-3">
