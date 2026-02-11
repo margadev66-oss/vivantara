@@ -1,4 +1,5 @@
 import { Facebook, Linkedin } from "lucide-react"
+import Image from "next/image"
 import ContactForm from "./ContactForm"
 import { getEditablePage } from "@/lib/editable-pages"
 
@@ -7,7 +8,7 @@ export default async function ContactPage() {
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Start the Conversation</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -22,6 +23,17 @@ export default async function ContactPage() {
               </>
             ) : (
               <>
+                <div className="mb-8 flex justify-center">
+                  <div className="relative h-44 w-44 overflow-hidden rounded-full border border-warmth/20 shadow-[0_14px_34px_-24px_rgba(16,25,37,0.45)]">
+                    <Image
+                      src="/assests/contact/potrait.png"
+                      alt="Founder portrait"
+                      fill
+                      sizes="11rem"
+                      className="object-cover object-[50%_14%] scale-[1.06]"
+                    />
+                  </div>
+                </div>
                 <h2 className="text-3xl font-serif text-thought mb-5">What to Expect</h2>
                 <p className="text-thought/75 text-lg leading-relaxed mb-8">
                   An initial conversation to understand your context, challenges, and interest areas. From there, the
@@ -82,3 +94,4 @@ export default async function ContactPage() {
     </main>
   )
 }
+

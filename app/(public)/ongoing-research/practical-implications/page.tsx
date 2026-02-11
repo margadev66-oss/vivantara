@@ -1,5 +1,6 @@
 import EditablePageContent from "@/components/EditablePageContent"
 import { getEditablePage } from "@/lib/editable-pages"
+import Image from "next/image"
 
 const practicalGains = [
   "Understand why capable people appear to underperform in critical situations",
@@ -22,8 +23,17 @@ export default async function OngoingResearchPracticalImplicationsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
+      <Image
+        src="/assests/research/bg2.jpeg"
+        alt="Practical implications background image"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/32 via-canvas/54 to-canvas/74" />
+      <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Practical Implications for Organisations</h1>
 
         <div className="space-y-6 text-thought/75 text-lg leading-relaxed max-w-4xl mb-14">
@@ -92,3 +102,4 @@ export default async function OngoingResearchPracticalImplicationsPage() {
     </main>
   )
 }
+

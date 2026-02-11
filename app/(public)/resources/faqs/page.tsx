@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import EditablePageContent from "@/components/EditablePageContent"
 import { getEditablePage } from "@/lib/editable-pages"
@@ -58,8 +59,17 @@ export default async function ResourcesFaqsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
+      <Image
+        src="/assests/resoursces/bg2.jpeg"
+        alt="Resources FAQs background image"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/34 via-canvas/56 to-canvas/76" />
+      <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Frequently Asked Questions</h1>
 
         <div className="space-y-5 mb-12">
@@ -87,3 +97,4 @@ export default async function ResourcesFaqsPage() {
     </main>
   )
 }
+

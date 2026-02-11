@@ -41,7 +41,7 @@ export default async function EngageIndex() {
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         {editablePage ? (
           <section className="section-card rounded-2xl p-8 md:p-10 mb-16">
             <h1 className="text-4xl md:text-6xl font-serif text-thought mb-6">{editablePage.title}</h1>
@@ -90,3 +90,4 @@ export default async function EngageIndex() {
     </main>
   )
 }
+

@@ -1,5 +1,6 @@
 import EditablePageContent from "@/components/EditablePageContent"
 import { getEditablePage } from "@/lib/editable-pages"
+import Image from "next/image"
 
 const caseStudies = [
   {
@@ -45,8 +46,17 @@ export default async function KnowledgeAssetsCaseStudiesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
+      <Image
+        src="/assests/knowledge-assests/bg3.jpeg"
+        alt="Case studies background image"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/34 via-canvas/54 to-canvas/74" />
+      <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">
           Observed Patterns from Organisations Under Pressure
         </h1>
@@ -88,3 +98,4 @@ export default async function KnowledgeAssetsCaseStudiesPage() {
     </main>
   )
 }
+

@@ -14,6 +14,7 @@
   --font-serif: "Iowan Old Style", "Baskerville Old Face", "Palatino Linotype", Georgia, serif;
 
   --text-6xl: 2.75rem;
+  --layout-max-width: 80rem;
 }
 
 @layer base {
@@ -56,7 +57,7 @@
 
 @layer components {
   .public-shell section {
-    max-width: 80rem;
+    max-width: var(--layout-max-width) !important;
     margin-inline: auto;
     border-radius: 1.75rem;
     overflow: hidden;
@@ -66,7 +67,12 @@
   }
 
   .public-shell .container[class*="max-w-"] {
-    max-width: 80rem;
+    max-width: var(--layout-max-width) !important;
+  }
+
+  .public-shell main > .container,
+  .public-shell main > article.container {
+    max-width: var(--layout-max-width) !important;
   }
 
   .public-shell main > section + section {

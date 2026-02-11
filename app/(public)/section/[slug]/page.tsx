@@ -48,7 +48,7 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-7xl">
         <h1 className="text-4xl md:text-5xl font-serif text-thought mb-12 border-b border-warmth/20 pb-6">
           {title}
         </h1>
@@ -88,3 +88,4 @@ export default async function SectionPage({ params }: { params: Promise<{ slug: 
     </main>
   )
 }
+

@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-3xl">
+      <div className="container mx-auto max-w-7xl">
         <h1 className="text-4xl md:text-5xl font-serif text-thought mb-12 capitalize">
           {page ? page.title : slug.replace(/-/g, " ")}
         </h1>
@@ -34,3 +34,4 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     </main>
   )
 }
+

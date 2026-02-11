@@ -19,7 +19,7 @@ export default async function EngageOrganisationsPage() {
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+      <div className="container mx-auto max-w-7xl">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">
           Strengthening the Dimensions that Shape Organisational Response
         </h1>
@@ -80,3 +80,4 @@ export default async function EngageOrganisationsPage() {
     </main>
   )
 }
+

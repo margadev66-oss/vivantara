@@ -56,7 +56,7 @@ export default async function Navbar() {
         <div className="flex h-[76px] items-center justify-between px-4 md:px-6">
           <Link href="/home" className="flex items-center gap-3">
             <div className="relative h-9 w-9 overflow-hidden rounded-full border border-warmth/25 bg-white/85">
-              <Image src="/logo.png" alt="Vivartana Logo" fill className="object-cover scale-110" priority />
+              <Image src="/assests/logo.png" alt="Vivartana Logo" fill className="object-cover scale-110" priority />
             </div>
             <div>
               <p className="text-sm font-medium tracking-wide text-thought/78">Vivartana Transformation Services</p>

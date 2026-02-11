@@ -8,15 +8,14 @@ function Hero({ content }: { content: typeof DEFAULT_HOME_CONTENT.hero }) {
     return (
         <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center px-6 overflow-hidden">
             <Image
-                src="/hero.png"
-                alt="Abstract fabric-inspired background"
+                src="/assests/home/bg2.jpeg"
+                alt="Modern glass architecture viewed upward"
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-[92%_18%] scale-110"
+                className="object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-canvas/88 via-canvas/34 to-transparent" />
-
             <div className="container mx-auto max-w-7xl relative z-10">
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-thought leading-tight mb-8 tracking-tight max-w-5xl">
                     {content.title}
@@ -73,15 +72,15 @@ function WhatWeDo({ content }: { content: typeof DEFAULT_HOME_CONTENT.what_we_do
                 <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
                     <p className="text-lg text-thought/80 leading-relaxed lg:col-span-7">{content.intro}</p>
                     <div className="lg:col-span-5">
-                        <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-warmth/20 bg-white shadow-[0_16px_40px_-28px_rgba(16,25,37,0.35)] sm:h-72">
+                        <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-warmth/20 bg-canvas shadow-[0_16px_40px_-28px_rgba(16,25,37,0.35)] sm:h-72">
                             <Image
-                                src="/mini.png"
+                                src="/assests/mini.png"
                                 alt="Interlocking structures representing coordinated systems"
                                 fill
                                 sizes="(min-width: 1024px) 32vw, 100vw"
-                                className="object-cover object-[46%_44%] scale-[1.18]"
+                                className="object-cover object-[50%_52%] mix-blend-multiply scale-[1.34]"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-canvas/40 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-canvas/20 to-transparent" />
                         </div>
                     </div>
                 </div>
@@ -127,7 +126,7 @@ function WhyThisMatters({ content }: { content: typeof DEFAULT_HOME_CONTENT.why_
                     <div className="lg:col-span-2">
                         <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-white/15 shadow-[0_18px_44px_-28px_rgba(0,0,0,0.7)] sm:h-72 lg:h-full lg:min-h-[22rem]">
                             <Image
-                                src="/bg.png"
+                                src="/assests/bg.png"
                                 alt="Abstract connected strategy visual"
                                 fill
                                 sizes="(min-width: 1024px) 24vw, 100vw"
@@ -183,27 +182,27 @@ function AboutFounder({ content }: { content: typeof DEFAULT_HOME_CONTENT.about_
     return (
         <section id="about-the-founder" className="py-28 bg-canvas border-t border-warmth/20 px-6">
             <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <div className="lg:col-span-5">
+                <div className="lg:col-span-7 h-full flex flex-col justify-center space-y-6 text-lg text-thought/80 leading-relaxed">
                     <p className="text-sm uppercase tracking-widest text-action mb-6">{content.eyebrow}</p>
                     <h2 className="text-4xl md:text-5xl font-serif text-thought leading-tight mb-6">
                         {content.title}
                     </h2>
-                    <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-full border border-warmth/20 bg-white sm:h-64 sm:w-64 md:h-72 md:w-72 lg:mx-0">
-                        <Image
-                            src="/potrait.png"
-                            alt="Founder portrait"
-                            fill
-                            sizes="(min-width: 1024px) 18rem, 16rem"
-                            className="object-cover object-[50%_18%] scale-125"
-                        />
-                    </div>
-                </div>
-                <div className="lg:col-span-7 h-full flex flex-col justify-end space-y-6 text-lg text-thought/80 leading-relaxed">
                     <p>{content.body_1}</p>
                     <p>{content.body_2}</p>
                     <Link href="/contact" className="cta-button h-9 gap-2 px-4 text-xs whitespace-nowrap sm:text-sm w-fit">
                         Start a Conversation <ArrowRight size={14} />
                     </Link>
+                </div>
+                <div className="lg:col-span-5 lg:mt-[4rem]">
+                    <div className="relative mx-auto w-full max-w-xl aspect-square overflow-hidden rounded-2xl border border-warmth/20 shadow-[0_16px_40px_-28px_rgba(16,25,37,0.35)] lg:mx-0 lg:max-w-[34rem]">
+                        <Image
+                            src="/assests/potrait.png"
+                            alt="Founder speaking at a podium"
+                            fill
+                            sizes="(min-width: 1024px) 34rem, 100vw"
+                            className="object-cover object-center"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
@@ -252,6 +251,14 @@ function TrustMarkers({ content }: { content: typeof DEFAULT_HOME_CONTENT.trust_
 function CTA({ content }: { content: typeof DEFAULT_HOME_CONTENT.cta }) {
     return (
         <section id="call-to-action" className="py-32 bg-thought text-center px-6 relative overflow-hidden">
+            <Image
+                src="/assests/home/bg3.jpeg"
+                alt="Monochrome industrial light fixture"
+                fill
+                sizes="100vw"
+                className="object-cover object-center scale-[0.97]"
+            />
+            <div className="absolute inset-0 bg-thought/72" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full" />
 

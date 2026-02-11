@@ -1,5 +1,6 @@
 import { prisma, withPrismaFallback } from "@/lib/prisma"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { getEditablePage } from "@/lib/editable-pages"
 
@@ -16,8 +17,17 @@ export default async function OngoingResearchIndex() {
   )
 
   return (
-    <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
+      <Image
+        src="/assests/research/bg.jpg"
+        alt="Research background"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/36 via-canvas/58 to-canvas/76" />
+      <div className="container mx-auto max-w-7xl relative z-10">
         {editablePage ? (
           <section className="section-card rounded-2xl p-8 md:p-10 mb-16">
             <h1 className="text-4xl md:text-6xl font-serif text-thought mb-6">{editablePage.title}</h1>
@@ -56,3 +66,5 @@ export default async function OngoingResearchIndex() {
     </main>
   )
 }
+
+

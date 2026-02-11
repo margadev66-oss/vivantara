@@ -26,7 +26,7 @@ async function GenericPage({ params, section }: { params: { slug: string }, sect
   if (!page) {
     return (
       <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-        <div className="container mx-auto max-w-3xl">
+        <div className="container mx-auto max-w-7xl">
           <h1 className="text-4xl md:text-5xl font-serif text-thought mb-12 capitalize">
             {slug.replace(/-/g, " ")}
           </h1>
@@ -40,7 +40,7 @@ async function GenericPage({ params, section }: { params: { slug: string }, sect
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-3xl">
+      <div className="container mx-auto max-w-7xl">
         <h1 className="text-4xl md:text-5xl font-serif text-thought mb-12">
           {page.title}
         </h1>
@@ -57,3 +57,4 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const resolvedParams = await params
   return <GenericPage params={resolvedParams} section="engage" />
 }
+

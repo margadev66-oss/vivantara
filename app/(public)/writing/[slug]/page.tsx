@@ -19,7 +19,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <article className="container mx-auto max-w-3xl">
+      <article className="container mx-auto max-w-7xl">
         <header className="mb-12 text-center">
           <div className="text-sm uppercase tracking-widest text-warmth mb-4">
             {post.category}
@@ -44,3 +44,4 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     </main>
   )
 }
+

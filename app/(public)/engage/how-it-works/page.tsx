@@ -1,4 +1,4 @@
-import EditablePageContent from "@/components/EditablePageContent"
+import Image from "next/image"
 import { getEditablePage } from "@/lib/editable-pages"
 
 const phaseTwoFocusAreas = [
@@ -12,16 +12,33 @@ const cycleStages = ["Scan", "Interpret", "Strengthen", "Re-Scan"]
 
 export default async function EngageHowItWorksPage() {
   const editablePage = await getEditablePage("engage/how-it-works")
-  if (editablePage) {
-    return <EditablePageContent title={editablePage.title} content={editablePage.content} />
-  }
 
   return (
-    <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
-        <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">How the Vivartana Engagement Unfolds</h1>
+    <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
+      <Image
+        src="/assests/engage%20us/bg2.jpeg"
+        alt="Abstract light trails on a dark background"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/18 via-black/26 to-black/34" />
 
-        <div className="space-y-6 text-thought/75 text-lg leading-relaxed max-w-4xl mb-14">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {editablePage ? (
+          <section className="section-card rounded-2xl p-8 md:p-10">
+            <h1 className="text-4xl md:text-6xl font-serif text-thought mb-10">{editablePage.title}</h1>
+            <div
+              className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-thought prose-p:text-thought/85 prose-li:text-thought/85 prose-a:text-action"
+              dangerouslySetInnerHTML={{ __html: editablePage.content }}
+            />
+          </section>
+        ) : (
+          <>
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-8">How the Vivartana Engagement Unfolds</h1>
+
+        <div className="space-y-6 text-white/88 text-lg leading-relaxed max-w-4xl mb-14">
           <p>
             Vivartana follows a structured, iterative workflow designed to progressively strengthen the organisational
             dimensions that shape behaviour under pressure.
@@ -111,7 +128,10 @@ export default async function EngageHowItWorksPage() {
             behaves when tested.
           </p>
         </section>
+          </>
+        )}
       </div>
     </main>
   )
 }
+

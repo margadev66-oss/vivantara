@@ -1,5 +1,6 @@
 import EditablePageContent from "@/components/EditablePageContent"
 import { getEditablePage } from "@/lib/editable-pages"
+import Image from "next/image"
 
 const stagedApproach = [
   "Exploratory qualitative inquiry to understand how individuals at different organisational levels perceive and describe behaviour during stressful situations.",
@@ -21,8 +22,17 @@ export default async function OngoingResearchDesignMethodologyPage() {
   }
 
   return (
-    <main className="min-h-screen bg-canvas pt-12 pb-24 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
+      <Image
+        src="/assests/research/bg.jpg"
+        alt="Research design background image"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/32 via-canvas/54 to-canvas/74" />
+      <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Research Design and Methodology</h1>
 
         <div className="space-y-6 text-thought/75 text-lg leading-relaxed max-w-4xl mb-14">
@@ -96,3 +106,4 @@ export default async function OngoingResearchDesignMethodologyPage() {
     </main>
   )
 }
+

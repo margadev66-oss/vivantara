@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/home" className="inline-flex items-center gap-3">
               <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/25 bg-white/90">
-                <Image src="/logo.png" alt="Vivartana logo" fill className="object-cover scale-110" />
+                <Image src="/assests/logo.png" alt="Vivartana logo" fill className="object-cover scale-110" />
               </div>
               <div>
                 <p className="font-serif text-[1.35rem] leading-none">Vivartana Transformation Services</p>
