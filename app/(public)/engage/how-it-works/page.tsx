@@ -16,7 +16,7 @@ export default async function EngageHowItWorksPage() {
   return (
     <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
       <Image
-        src="/assests/engage%20us/bg2.jpeg"
+        src="/assests/engage-us/bg2.jpeg"
         alt="Abstract light trails on a dark background"
         fill
         priority

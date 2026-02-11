@@ -59,7 +59,7 @@ export default async function EngageServicesOverviewPage() {
   return (
     <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
       <Image
-        src="/assests/engage%20us/bg.jpeg"
+        src="/assests/engage-us/bg.jpeg"
         alt="Sunlight filtering through a misty forest"
         fill
         priority
