@@ -1,4 +1,4 @@
-import EditablePageContent from "@/components/EditablePageContent"
+﻿import EditablePageContent from "@/components/EditablePageContent"
 import { getEditablePage } from "@/lib/editable-pages"
 import Image from "next/image"
 
@@ -12,8 +12,8 @@ const practicalGains = [
 
 const translatedFrameworks = [
   "Organisational Stress Response",
-  "ORI Scan™ (Organisational Response Imaging)",
-  "Organisational Operating System (OOS™)",
+  "ORI Scanâ„¢ (Organisational Response Imaging)",
+  "Organisational Operating System (OOSâ„¢)",
 ]
 
 export default async function OngoingResearchPracticalImplicationsPage() {
@@ -32,7 +32,7 @@ export default async function OngoingResearchPracticalImplicationsPage() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/32 via-canvas/54 to-canvas/74" />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/48 via-canvas/70 to-canvas/86" />
       <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Practical Implications for Organisations</h1>
 
@@ -102,4 +102,5 @@ export default async function OngoingResearchPracticalImplicationsPage() {
     </main>
   )
 }
+
 

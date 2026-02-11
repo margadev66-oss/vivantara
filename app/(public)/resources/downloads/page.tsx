@@ -26,7 +26,7 @@ export default async function ResourcesDownloadsPage() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/34 via-canvas/56 to-canvas/76" />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/68 via-canvas/88 to-canvas/96" />
       <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Downloads</h1>
 

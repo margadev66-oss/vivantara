@@ -59,14 +59,14 @@ export default async function EngageServicesOverviewPage() {
   return (
     <main className="relative min-h-screen bg-canvas pt-12 pb-24 px-6 overflow-hidden">
       <Image
-        src="/assests/engage-us/bg.jpeg"
+        src="/assests/engage-us/bg-v2.png"
         alt="Sunlight filtering through a misty forest"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-[30%_34%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/28 via-canvas/48 to-canvas/68" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/42 via-black/50 to-canvas/80" />
 
       <div className="container mx-auto max-w-7xl relative z-10">
         {editablePage ? (
@@ -79,9 +79,11 @@ export default async function EngageServicesOverviewPage() {
           </section>
         ) : (
           <>
-            <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">How We Help</h1>
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-8 drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)]">
+              How We Help
+            </h1>
 
-            <div className="space-y-6 text-thought/75 text-lg leading-relaxed max-w-4xl mb-14">
+            <div className="space-y-6 text-white/88 text-lg leading-relaxed max-w-4xl mb-14">
               <p>Misalignment rarely appears as a single problem.</p>
               <p>
                 It shows up as tension in leaders, confusion in teams, cultural drift in organisations, and quiet stress

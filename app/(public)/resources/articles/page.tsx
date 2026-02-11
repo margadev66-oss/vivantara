@@ -57,7 +57,7 @@ export default async function ResourcesArticlesPage({
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/34 via-canvas/56 to-canvas/76" />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/68 via-canvas/88 to-canvas/96" />
       <div className="container mx-auto max-w-7xl relative z-10">
         {editablePage ? (
           <section className="section-card rounded-2xl p-8 md:p-10 mb-12">

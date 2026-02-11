@@ -1,4 +1,4 @@
-import EditablePageContent from "@/components/EditablePageContent"
+﻿import EditablePageContent from "@/components/EditablePageContent"
 import { getEditablePage } from "@/lib/editable-pages"
 import Image from "next/image"
 
@@ -31,7 +31,7 @@ export default async function OngoingResearchDesignMethodologyPage() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/32 via-canvas/54 to-canvas/74" />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/48 via-canvas/70 to-canvas/86" />
       <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Research Design and Methodology</h1>
 
@@ -76,7 +76,7 @@ export default async function OngoingResearchDesignMethodologyPage() {
         <section className="border border-warmth/20 bg-white p-8 md:p-10 mb-10">
           <h2 className="text-3xl font-serif text-thought mb-5">Connection to Vivartana&apos;s Practice</h2>
           <p className="text-thought/75 text-lg leading-relaxed">
-            The ORI Scan™ and the focus on Organisational Stress Response draw inspiration from this research design.
+            The ORI Scanâ„¢ and the focus on Organisational Stress Response draw inspiration from this research design.
           </p>
           <p className="text-thought/75 text-lg leading-relaxed mt-4">
             They translate research thinking into structured organisational engagement.
@@ -106,4 +106,5 @@ export default async function OngoingResearchDesignMethodologyPage() {
     </main>
   )
 }
+
 

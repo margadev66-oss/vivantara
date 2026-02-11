@@ -33,7 +33,7 @@ export default async function KnowledgeAssetsPapersPage() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/30 via-canvas/52 to-canvas/72" />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/46 via-canvas/68 to-canvas/84" />
       <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-4xl md:text-6xl font-serif text-thought mb-8">Research Foundations</h1>
 

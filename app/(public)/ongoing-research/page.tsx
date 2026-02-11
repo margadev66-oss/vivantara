@@ -26,7 +26,7 @@ export default async function OngoingResearchIndex() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-canvas/36 via-canvas/58 to-canvas/76" />
+      <div className="absolute inset-0 bg-gradient-to-b from-canvas/50 via-canvas/72 to-canvas/88" />
       <div className="container mx-auto max-w-7xl relative z-10">
         {editablePage ? (
           <section className="section-card rounded-2xl p-8 md:p-10 mb-16">
