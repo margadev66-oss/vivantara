@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build --webpack",
+    "build": "NEXT_DISABLE_SWC_WASM=1 RAYON_NUM_THREADS=1 next build --webpack",
     "start": "node .next/standalone/server.js",
     "start:next": "next start",
     "start:standalone": "node .next/standalone/server.js",
-    "build:milesweb": "npm run clean:build && npm run build",
     "clean:build": "rm -rf .next",
+    "env:check:milesweb": "node -e \"const req=['DATABASE_URL'];const opt=['NEXTAUTH_SECRET','AUTH_SECRET'];const miss=req.filter(k=>!process.env[k]);const hasSecret=opt.some(k=>Boolean(process.env[k]));if(miss.length||!hasSecret){console.error('Missing required env vars: '+[...miss,...(!hasSecret?['NEXTAUTH_SECRET or AUTH_SECRET']:[])].join(', '));process.exit(1)};console.log('MilesWeb env check passed')\"",
+    "build:milesweb": "npm run clean:build && npm run build",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest"

@@ -98,6 +98,26 @@ MilesWeb/cPanel environments commonly use symlinked `node_modules`. Turbopack ca
 
 This repository keeps `output: "standalone"` enabled in `next.config.ts`, and production start now uses `node .next/standalone/server.js`.
 
+
+#### MilesWeb/cPanel crash fix (`rayon-core` / `ThreadPoolBuildError`)
+
+If build logs show messages like:
+- `experimental.useWasmBinary ... will be ignored`
+- `we're using WASM bindings`
+- `rayon-core ... ThreadPoolBuildError ... Resource temporarily unavailable`
+
+then your host is falling back to the WASM SWC toolchain under strict process limits. This repo now builds with:
+- `NEXT_DISABLE_SWC_WASM=1`
+- `RAYON_NUM_THREADS=1`
+- `next build --webpack`
+
+So simply run:
+```bash
+npm run build:milesweb
+```
+
+Also remove any custom host env/config that forces WASM mode (for example `experimental.useWasmBinary` or similar platform toggles).
+
 ### AWS Amplify (SSR)
 
 This repo includes an `amplify.yml` that writes selected Amplify environment variables into `.env.production` before running `next build`.
