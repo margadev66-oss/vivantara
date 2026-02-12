@@ -68,6 +68,25 @@ Log in with the credentials created during the seed step.
 
 `NEXTAUTH_SECRET`/`AUTH_SECRET` is required in production. If missing, NextAuth throws `NO_SECRET` and admin login fails.
 
+### MilesWeb (Node.js Hosting)
+
+For MilesWeb deployments, use the Next.js standalone output for a smaller runtime bundle and predictable start command.
+
+1. In your MilesWeb Node.js app settings, use:
+   - **Build command:** `npm run build:milesweb`
+   - **Start command:** `npm run start:standalone`
+2. Configure environment variables in MilesWeb panel:
+   - `DATABASE_URL`
+   - `NEXTAUTH_SECRET` (or `AUTH_SECRET`)
+   - `NEXTAUTH_URL` (your production URL)
+   - `PORT` (if MilesWeb requires a specific port)
+3. If your deployment flow supports post-build commands, run:
+   ```bash
+   npx prisma migrate deploy
+   ```
+
+This repository now enables `output: "standalone"` in `next.config.ts` so MilesWeb can run directly with `node .next/standalone/server.js`.
+
 ### AWS Amplify (SSR)
 
 This repo includes an `amplify.yml` that writes selected Amplify environment variables into `.env.production` before running `next build`.
