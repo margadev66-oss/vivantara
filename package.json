@@ -8,9 +8,9 @@
     "start": "node .next/standalone/server.js",
     "start:next": "next start",
     "start:standalone": "node .next/standalone/server.js",
-    "clean:build": "rm -rf .next",
+    "clean:build": "node -e \"require('node:fs').rmSync('.next',{recursive:true,force:true})\"",
     "env:check:milesweb": "node -e \"const req=['DATABASE_URL'];const opt=['NEXTAUTH_SECRET','AUTH_SECRET'];const miss=req.filter(k=>!process.env[k]);const hasSecret=opt.some(k=>Boolean(process.env[k]));if(miss.length||!hasSecret){console.error('Missing required env vars: '+[...miss,...(!hasSecret?['NEXTAUTH_SECRET or AUTH_SECRET']:[])].join(', '));process.exit(1)};console.log('MilesWeb env check passed')\"",
-    "build:milesweb": "npm run clean:build && npm run build",
+    "build:milesweb": "npm run env:check:milesweb && node scripts/build-milesweb.js",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest"
