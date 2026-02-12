@@ -5,9 +5,9 @@ import { getEditablePage } from "@/lib/editable-pages"
 export default async function WritingIndexPage({
   searchParams,
 }: {
-  searchParams: { category?: string }
+  searchParams: Promise<{ category?: string }>
 }) {
-  const { category } = searchParams
+  const { category } = await searchParams
   const editablePage = await getEditablePage("writing")
 
   const where = {
