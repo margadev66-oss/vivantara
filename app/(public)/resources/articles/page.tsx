@@ -15,9 +15,9 @@ const articleThemes = [
 export default async function ResourcesArticlesPage({
   searchParams,
 }: {
-  searchParams: { category?: string }
+  searchParams: Promise<{ category?: string }>
 }) {
-  const { category } = searchParams
+  const { category } = await searchParams
 
   const where = {
     published: true,
