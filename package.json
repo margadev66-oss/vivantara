@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "node .next/standalone/server.js",
+    "start:next": "next start",
     "start:standalone": "node .next/standalone/server.js",
-    "build:milesweb": "npm run build",
+    "build:milesweb": "npm run clean:build && npm run build",
+    "clean:build": "rm -rf .next",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest"

@@ -70,22 +70,33 @@ Log in with the credentials created during the seed step.
 
 ### MilesWeb (Node.js Hosting)
 
-For MilesWeb deployments, use the Next.js standalone output for a smaller runtime bundle and predictable start command.
+MilesWeb/cPanel environments commonly use symlinked `node_modules`. Turbopack can fail in this setup, so this project is configured to use **Webpack** for both dev and build commands.
 
-1. In your MilesWeb Node.js app settings, use:
+1. In MilesWeb Node.js app settings, use:
    - **Build command:** `npm run build:milesweb`
-   - **Start command:** `npm run start:standalone`
+   - **Start command:** `npm run start`
 2. Configure environment variables in MilesWeb panel:
    - `DATABASE_URL`
    - `NEXTAUTH_SECRET` (or `AUTH_SECRET`)
    - `NEXTAUTH_URL` (your production URL)
    - `PORT` (if MilesWeb requires a specific port)
-3. If your deployment flow supports post-build commands, run:
+3. Build once locally or in CI with a clean output folder:
+   ```bash
+   npm run clean:build
+   npm run build
+   ```
+4. If your host created problematic symlinked modules, run a clean reinstall:
+   ```bash
+   rm -rf node_modules package-lock.json
+   npm install
+   npm run build
+   ```
+5. Run production migrations during deploy:
    ```bash
    npx prisma migrate deploy
    ```
 
-This repository now enables `output: "standalone"` in `next.config.ts` so MilesWeb can run directly with `node .next/standalone/server.js`.
+This repository keeps `output: "standalone"` enabled in `next.config.ts`, and production start now uses `node .next/standalone/server.js`.
 
 ### AWS Amplify (SSR)
 
